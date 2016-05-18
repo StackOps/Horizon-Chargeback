@@ -1,0 +1,7 @@
+
+
+PANEL = 'plugin_preview'
+PANEL_GROUP = 'chargeback'
+PANEL_DASHBOARD = 'project'
+
+ADD_PANEL = 'openstack_dashboard.contrib.developer.theme_preview.panel.Preview'
