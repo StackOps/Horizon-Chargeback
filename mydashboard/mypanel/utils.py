@@ -15,18 +15,16 @@ import time
 from time import mktime
 from datetime import datetime
 from requests.auth import HTTPBasicAuth
-
+from openstack_dashboard.api import base
 from django.template.defaultfilters import register
 from django.utils.translation import ugettext_lazy as _
 import requests
 
 from json import dumps
-
 from horizon import exceptions
-
 requests.packages.urllib3.disable_warnings()
 
-chargeback_url = "https://chargeback.stackops.net"
+
 json_headers = {'Accept': 'application/json'}
 
 class Account:
@@ -41,13 +39,14 @@ class Account:
         self.balance = balance
 
 def getAccount(self, token=None, status="ACTIVE"):
+    chargeback_url = base.url_for(self.request, 'chargeback', 'publicURL')
     token = self.request.session.get('token').id
+
     headers = {"X-Auth-Token": "%s" % token, 'Accept': 'application/json'}
     try:
-        r = requests.get(chargeback_url + "/api/account/current", headers=headers, verify=False)
+        r = requests.get(chargeback_url + "api/account/current", headers=headers, verify=False)
         account = [];
         data =r.json()['account']
-        print data
         account.append(Account(data[u'id'], data[u'name'], data[u'description'], data[u'balance']))
         return account
 
