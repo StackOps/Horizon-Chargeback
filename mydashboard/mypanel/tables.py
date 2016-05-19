@@ -19,10 +19,10 @@ class MyFilterAction(tables.FilterAction):
 
 
 class InstancesTable(tables.DataTable):
+    id = tables.Column('id', verbose_name=_("ID"))
     name = tables.Column('name',  verbose_name=_("Name"))
-    status = tables.Column('status', verbose_name=_("Status"))
-    zone = tables.Column('availability_zone', verbose_name=_("Availability Zone"))
-    image_name = tables.Column('image_name', verbose_name=_("Image Name"))
+    description = tables.Column('description', verbose_name=_("Description"))
+    balance = tables.Column('balance', verbose_name=_("Balance"))
 
     class Meta:
         name = "instances"

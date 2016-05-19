@@ -10,16 +10,19 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from horizon import tabs
-
-from openstack_dashboard.dashboards.mydashboard.mypanel \
-    import tabs as mydashboard_tabs
 
 
-class IndexView(tabs.TabbedTableView):
-    tab_group_class = mydashboard_tabs.MypanelTabs
+from horizon import exceptions, tables, workflows, forms, tabs
+
+from openstack_dashboard.dashboards.mydashboard.mypanel import tables as instance_tables
+from openstack_dashboard.dashboards.mydashboard.mypanel import utils
+
+
+
+class IndexView(tables.DataTableView):
+    table_class = instance_tables.InstancesTable
     template_name = 'mydashboard/mypanel/index.html'
 
-    def get_data(self, request, context, *args, **kwargs):
+    def get_data(self):
         # Add data to the context here...
-        return context
+        return utils.getAccount(self)
