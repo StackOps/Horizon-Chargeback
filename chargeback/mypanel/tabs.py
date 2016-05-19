@@ -16,8 +16,8 @@ from horizon import exceptions
 from horizon import tabs
 
 from openstack_dashboard import api
-from openstack_dashboard.dashboards.mydashboard.mypanel import tables
-from openstack_dashboard.dashboards.mydashboard.mypanel import utils
+from openstack_dashboard.dashboards.chargeback.mypanel import tables
+from openstack_dashboard.dashboards.chargeback.mypanel import utils
 
 
 

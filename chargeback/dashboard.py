@@ -9,20 +9,22 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
+from django.utils.translation import ugettext_lazy as _
+
+import horizon
 
 
-
-from horizon import exceptions, tables, workflows, forms, tabs
-
-from openstack_dashboard.dashboards.mydashboard.mypanel import tables as instance_tables
-from openstack_dashboard.dashboards.mydashboard.mypanel import utils
-
+class Chargebackgroup(horizon.PanelGroup):
+    slug = "mygroup"
+    name = _("My Group")
+    panels = ('mypanel',)
 
 
-class IndexView(tables.DataTableView):
-    table_class = instance_tables.InstancesTable
-    template_name = 'mydashboard/mypanel/index.html'
+class Mydashboard(horizon.Dashboard):
+    name = _("Chargeback")
+    slug = "chargeback"
+    panels = (Chargebackgroup,)  # Add your panels here.
+    default_panel = 'mypanel'  # Specify the slug of the default panel.
 
-    def get_data(self):
-        # Add data to the context here...
-        return utils.getAccount(self)
+
+horizon.register(Mydashboard)

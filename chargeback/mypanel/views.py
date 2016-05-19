@@ -10,16 +10,19 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from django.utils.translation import ugettext_lazy as _
-
-import horizon
-
-from openstack_dashboard.dashboards.mydashboard import dashboard
 
 
-class Mypanel(horizon.Panel):
-    name = _("Mypanel")
-    slug = "mypanel"
+from horizon import exceptions, tables, workflows, forms, tabs
+
+from openstack_dashboard.dashboards.chargeback.mypanel import tables as instance_tables
+from openstack_dashboard.dashboards.chargeback.mypanel import utils
 
 
-dashboard.Mydashboard.register(Mypanel)
+
+class IndexView(tables.DataTableView):
+    table_class = instance_tables.InstancesTable
+    template_name = 'chargeback/mypanel/index.html'
+
+    def get_data(self):
+        # Add data to the context here...
+        return utils.getAccount(self)
