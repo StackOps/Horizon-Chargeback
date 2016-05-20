@@ -13,6 +13,7 @@ This repository is used to visualize the Stackops-Chargeback service in Horizon.
        ADD_INSTALLED_APPS = [
          'openstack_dashboard.dashboards.stackops_chargeback',
        ]
+       ADD_ANGULAR_MODULES = ['horizon.dashboard.chargeback.mypanel'] #angular modules
 * git clone this repo to horizon/openstack_dashboard/dashboards/chargeback
 
 * from horizon directiony run ./run_tests.sh --runserver 0.0.0.0:8888

@@ -10,17 +10,12 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import traceback
-import time
-from time import mktime
-from datetime import datetime
-from requests.auth import HTTPBasicAuth
+
 from openstack_dashboard.api import base
 from django.template.defaultfilters import register
 from django.utils.translation import ugettext_lazy as _
 import requests
 
-from json import dumps
 from horizon import exceptions
 requests.packages.urllib3.disable_warnings()
 
