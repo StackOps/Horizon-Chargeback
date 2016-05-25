@@ -1,9 +1,18 @@
-<div ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
-  <div>Loading data from your controller:</div>
-  <ul>
-    <li ng-repeat="item in ctrl.items">
-      <span class="c1">{$ item.name $}</span>
-      <span class="c2">{$ item.id $}</span>
-    </li>
-  </ul>
-</div>
+<div>
+  <table ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
+    <thead>
+      <tr>ID</tr>
+      <tr>Name</tr>
+      <tr>Description</tr>
+      <tr>balance</tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="r in ctrl.items">
+        <td>{$ r.id $}</td>
+        <td>{$ r.name $}</td>
+        <td>{$ r.balance $}</td>
+        <td>{$ r.description $}</td>
+      </tr>
+
+    </tbody>
+  </table>

@@ -12,17 +12,15 @@
 
 
 
-from horizon import exceptions, tables, workflows, forms, tabs
+from horizon import views
 
-from openstack_dashboard.dashboards.chargeback.mypanel import tables as instance_tables
-from openstack_dashboard.dashboards.chargeback.mypanel import utils
-
-
-
-class IndexView(tables.DataTableView):
-    table_class = instance_tables.InstancesTable
+class IndexView(views.APIView):
+    # table_class = instance_tables.InstancesTable
     template_name = 'chargeback/mypanel/index.html'
 
-    def get_data(self):
+    # def get_data(self):
+    #     # Add data to the context here...
+    #     return utils.getAccount(self)
+    def get_data(self, request, context, *args, **kwargs):
         # Add data to the context here...
-        return utils.getAccount(self)
+        return context
