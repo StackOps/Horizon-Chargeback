@@ -17,4 +17,8 @@ ADD_JS_FILES = [
     'dashboard/widgets/cycles.directive.js',
 ]
 
+ADD_SCSS_FILES = [
+    'static/dashboard/css/chargeback.css'
+]
+
 AUTO_DISCOVER_STATIC_FILES = True

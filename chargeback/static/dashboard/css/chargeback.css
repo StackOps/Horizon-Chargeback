@@ -1,0 +1,603 @@
+.chargeback-shortcut {
+    background-image: url(../images/chargeback_48x48.png);
+}
+
+.chargeback-icon {
+     background-image: url(../images/chargeback_16x16.png);
+}
+
+.chargeback-add-icon {
+    background: url(../images/add_16x16.png) no-repeat left top !important;
+}
+
+.chargeback-details-icon {
+    background: url(../images/details_16x16.png) no-repeat left top !important;
+}
+
+.chargeback-edit-icon {
+    background: url(../images/edit_16x16.png) no-repeat left top !important;
+}
+
+.chargeback-run-icon {
+    background: url(../images/run_16x16.png) no-repeat left top !important;
+}
+
+.chargeback-menu-button {
+    margin-bottom: 15px;
+}
+
+.chargeback-menu-button .chart {
+    background-image: url(../images/chargeback_chart_32x32.png);
+}
+
+.chargeback-menu-button .card {
+    background-image: url(../images/credit_card_32x32.png);
+}
+
+.chargeback-menu-button .bill {
+    background-image: url(../images/bill_32x32.png);
+}
+
+.chargeback-menu-button .showaccounts{
+	background-image: url(../images/showaccounts_32x32.png);
+}
+.chargeback-menu-button .currentusage{
+	background-image: url(../images/presentation-icon.png);
+}
+
+.chargeback-menu-button .productfees{
+	background-image: url(../images/productfees_32x32.png);
+}
+
+.chargeback-menu-button .cycle {
+    background-image: url(../images/cycle_32x32.png);
+}
+
+.chargeback-menu-button .payment {
+    background-image: url(../images/payment_32x32.png);
+}
+
+.chargeback-menu-button .account {
+    background-image: url(../images/account_32x32.png);
+}
+
+.chargeback-menu-button .product {
+    background-image: url(../images/product_32x32.png);
+}
+
+.chargeback-menu-button .resource {
+    background-image: url(../images/resource_32x32.png);
+}
+
+.chargeback-menu-button .tenant {
+    background-image: url(../images/tenant_32x32.png);
+}
+
+.chargeback-menu-button .zones {
+    background-image: url(../images/zones_32x32.png);
+}
+
+.chargeback-menu-button .currency {
+    background-image: url(../images/currency_32x32.png);
+}
+
+.chargeback-menu-button .promocode {
+    background-image: url(../images/promocode_32x32.png);
+}
+
+.chargeback-menu-button .run {
+    background-image: url(../images/run_32x32.png);
+}
+
+.chargeback-bottom-border {
+    border-bottom: 2px solid #E8E8E8;
+}
+
+.chargeback-delete-icon {
+	background-image: url(../images/delete_16x16.png);
+}
+
+.chargeback-resource-type-icon {
+	background: url(../images/resource_type.png) no-repeat left top !important;
+}
+.chargeback-tenant-iconcls {
+	background: url(../images/tenant_16x16.png) no-repeat left top !important;
+}
+.chargeback_users_iconcls{
+	background: url(../images/users_16x16.png) !important;
+}
+.chargeback-resource-icon {
+	background: transparent !important;
+}
+
+.right-border-only {
+    border-right: 2px dashed #E8E8E8;
+}
+
+.account-header {
+    padding: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #999999;
+}
+
+/*
+ * Plain text in sections
+ */
+.empty-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #999999;
+    margin-top: 50px;
+}
+
+.cycle-box {
+    border: 1px solid #CCCCCC;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+/*
+ * Box selected and hover
+ */
+.cycle-box:hover {
+    border: 1px solid #666666;
+}
+
+.cycle-box:hover .cycle-title {
+    background-color: #D8D8D8;
+}
+
+.selected .cycle-box {
+    border: 1px solid #666666;
+}
+
+.selected .cycle-box .cycle-title {
+    background-color: #B8B8B8;
+}
+
+.unselected .cycle-box {
+    opacity: 0.6;
+}
+
+.chargeback-button-img{
+	background: url("../images/chargeback-export_excel.png") no-repeat scroll right center rgba(232, 232, 232, 1);
+    bottom: 10px;
+    color: black;
+    display: inline;
+    float: right;
+    font-size: 20px;
+    font-weight : bold;
+    padding: 5px 5px 3px;
+    position: relative;
+    right: 30px;
+    width: 200px;
+    border :1px solid #bbbbbb;
+    cursor: pointer;
+    border-radius : 3px;
+}
+
+.chargeback-button-img:hover{
+	background: url("../images/chargeback-export_excel.png") no-repeat scroll right center rgba(232, 232, 232, 0.5);
+    bottom: 10px;
+    color: black;
+    display: inline;
+    float: right;
+    font-size: 20px;
+    font-weight : bold;
+    padding: 5px 5px 3px;
+    position: relative;
+    right: 30px;
+    width: 200px;
+    cursor: pointer;
+    border :1px solid #9d9d9d;
+    border-radius : 3px;
+}
+
+
+.accountedit-editform-css-format{
+	/*border : 30px solid #eaeaea;*/
+	width : 75% !important;
+	margin-left : 80px !important;
+	height : 88% !important;
+	margin-top : 57px !important;
+}
+
+.accountedit-creditform-css-format{
+	/*border : 30px solid #eaeaea;*/
+	width : 75% !important;
+	margin-left : 110px !important;
+	margin-top : 25px !important;
+}
+
+.accountedit-billingform-css-format{
+	/*border : 30px solid #eaeaea;*/
+	width : 85% !important;
+	margin-left : 40px !important;
+	height : 97% !important;
+	margin-top : 10px !important;
+}
+
+/*
+ * Boxes styles
+ */
+.cycle-box .cycle-title {
+    background-color: #E8E8E8;
+    padding: 4px;
+    margin-bottom: 4px;
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-topright: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.title-text {
+    display: inline-block;
+}
+
+.clear {
+    margin: 5px 0 5px 0;
+}
+
+.clear-double {
+    margin: 10px 0 10px 0;
+}
+
+.cycle-box .box-el {
+    padding: 0 0 0 4px;
+}
+
+.cycle-box .key {
+    display: inline-block;
+    width: 75px;
+}
+
+.cycle-box .text {
+    display: inline-block;
+}
+
+.cycle-box .long {
+    width: 75%;
+}
+
+.cycle-box .description {
+    font-style: italic;
+    position: relative;
+    left: 20px;
+}
+
+.cycle-box .value {
+    display: inline;
+    float: right;
+    margin-right: 4px;
+}
+
+.total {
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.cycle-box-icon {
+    display: inline-block;
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.cycle-box-el-icon {
+    height: 17px;
+}
+
+.cycle-box-el-twolined {
+    height: 38px;
+}
+
+.cycle-box-el-threelined{
+	height: 50px;
+}
+/*
+ * Tenants admin
+ */
+.tenant-without-account td {
+    background-color: #FFF0F0 !important;
+}
+
+/*
+ * Accounts admin
+ */
+.tip-text {
+    color: #999999;
+}
+
+/**
+ * Payments
+ */
+.payments-box {
+    height: 90px;
+    padding-top: 15px;
+}
+
+.balance {
+    border: 1px solid #E8E8E8;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #E8E8E8;
+    width: 225px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.negative {
+    border: 2px solid #FF0000;
+}
+
+.cloud-usage {
+    border: 1px solid #E8E8E8;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #E8E8E8;
+    width: 225px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.payments-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #999999;
+    text-align: center;
+}
+
+.funds-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #999999;
+    padding-top: 5px;
+    font-family: palatino linotype, palatino, serif;
+}
+
+.payments-title .title-icon {
+    float: left;
+}
+
+.payments-amount {
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+.paypal-icon {
+    width: 50px !important;
+    background: url(../images/paypal_30px.png) no-repeat left center !important;
+}
+
+.credit-card-icon {
+    background: url(../images/credit_card_32x32.png) no-repeat left center !important;
+}
+
+.bitcoins-icon {
+    background: url(../images/bitcoin_32x32.png) no-repeat left center !important;
+}
+
+.promocode-icon {
+    background: url(../images/star_32x32.png) no-repeat left center !important;
+}
+
+.bank-icon {
+    background: url(../images/bank_32x32.png) no-repeat left center !important;
+}
+
+.status-message {
+    border: 1px solid #E8E8E8;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.status-message-info {
+    background-color: #B6E4B4;
+}
+
+.status-message-warn {
+    background-color: #E16060;
+}
+
+.labelStyle .x-form-item-label{
+	font-size: 12px;
+	color:#36648B;
+}
+
+.labelStyleHeader .x-form-item-label{
+	font-size: 14px;
+	color:#36648B;
+}
+
+.labelStyle-HEAD .x-form-item-label{
+	font-size: 16px;
+	color:#36648B;
+}
+
+.credit-card-number .x-form-item-label{
+	font-size: 16px;
+	color:#FFFFFF;
+}
+
+
+.codeStyle .x-form-text {
+	height: 35px;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.chargeback-container-white-icon{
+	background : white;
+}
+
+.chargeback-documentation-icon{
+	background: url(../images/document-icon-16x16.png) no-repeat left center !important;
+}
+
+.transfer .x-window-body-default{
+	background-color: #E0EEEE;
+    border: medium none;
+}
+
+
+div#element-detailss {
+    padding-top: 4px;
+}
+
+div#element-detailss  {
+    font-size: 13px;
+}
+
+div#element-detailss span {
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    background-color: #E0E0E0 !important;
+    padding: 4px 6px;
+    display : inline-block;
+}
+
+.chargeback-mask-css{
+	top : 49% !important;
+}
+
+.chargeback-mask-center-css{
+	left : 49% !important;
+}
+
+.chargeback-charselector-center-css{
+	left: 35% !important;
+	top: 40% !important;
+}
+
+/*****RICKSHAW***/
+
+.chargeback-chart-container .title {
+    position: relative;
+    height: 20px;
+    clear: both;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.chargeback-chart-container .yaxis {
+    position: relative;
+    float: left;
+    width: 50px;
+}
+
+.chargeback-chart-container .yaxis text {
+    font-size: 12px !important;
+    font-family: tahoma, arial, verdana, sans-serif;
+}
+
+.chargeback-chart-container .chart {
+    position: relative;
+    width: auto;
+    margin-left: 50px;
+}
+
+
+.chargeback-chart-container .nodata {
+    width: auto;
+    text-align: center;
+    line-height: 50px;
+}
+
+.chargeback-chart-container .legend {
+    position: absolute;
+    width: 150px;
+    right: 0;
+    top: 18px;
+    font-family: tahoma, arial, verdana, sans-serif;
+    font-size: 12px;
+    display: inline;
+    font-weight: bold;
+}
+
+.chargeback-chart-container .legend .line:first-child {
+    margin-top: 5px;
+}
+
+.chargeback-chart-container .legend .line {
+    margin-bottom: 2px;
+}
+
+.chargeback-chart-container .legend .line .swatch {
+    position: relative;
+    float: left;
+    margin-top: 2px;
+    display: block;
+    width: 8px;
+    height: 8px;
+    line-height: 12px;
+}
+
+.chargeback-chart-container .legend .line .label {
+    line-height: 12px;
+    margin-left: 12px;
+    font-family: tahoma, arial, verdana, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.chargeback-chart-container .legend .line .label-bold {
+    line-height: 12px;
+    margin-left: 12px;
+    font-family: tahoma, arial, verdana, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+.rickshaw_graph .x_tick .title {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 12px;
+    height: 12px;
+    margin: 0;
+    padding: 0;
+    bottom: -16px;
+    font-family: tahoma, arial, verdana, sans-serif;
+}
+
+.rickshaw_graph .detail .dot {
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    margin-left: -3px;
+    margin-right: 0;
+    border-radius: 5px;
+    background-color: white;
+    border-width: 2px;
+    border-style: solid;
+    display: none;
+    background-clip: padding-box;
+}
+
+.cbk-allowcredit-checkbox .x-grid-cell-inner{
+	padding : 0px;
+}
+
+.resourcesgrid .x-grid-dirty-cell{
+	background-image:none;
+}
+
+.resourcesgrid .x-grid-dirty-row {
+	color : orange!important;
+}
