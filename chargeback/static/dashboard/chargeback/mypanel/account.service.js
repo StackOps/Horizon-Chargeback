@@ -35,7 +35,8 @@
    */
   function chargebackAPI(apiService, toastService) {
     var service = {
-      getCurrentAccount : getCurrentAccount
+      getCurrentAccount : getCurrentAccount,
+      getCyclesAccount : getCyclesAccount
     };
 
 
@@ -55,6 +56,13 @@
         .error(function () {
           toastService.add('error', 'Unable to retrieve the current1211 account');
         });
+    }
+
+    function getCyclesAccount(account_id){
+      return apiService.get('/api/account/'+ account_id + '/cycle')
+      .error(function(){
+        toastService.add('error', 'Unable to retrieve the cycles for the account' + account_id);
+      });
     }
 
     return service;

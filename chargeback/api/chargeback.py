@@ -45,18 +45,56 @@ LOG = logging.getLogger(__name__)
 #         self.request = request
 
 
-
-def get_current_account(request):
-    token = request.session.get('token').id
-    tenant_id = request.user.tenant_id
-    chargeback_url = base.url_for(request, 'chargeback', 'publicURL')
-    headers = {"X-Auth-Token": "%s" % token, 'Accept': 'application/json'}
+def get_all_accounts(request):
+    token_ = request.session.get('token').id
+    url_ = base.url_for(request, 'chargeback', 'publicURL')
+    headers = {"X-Auth-Token": "%s" % token_, 'Accept': 'application/json'}
 
     try:
-        r = requests.get(chargeback_url + "api/account/current", headers=headers, verify=False)
+        r = requests.get("%s/api/account" % url_, headers=headers, verify=False)
+        data = r.json()
+        accounts = []
+
+        for account in data["accounts"]:
+            if account["status"] == status or status == "ALL":
+                accounts.append(account)
+        return accounts
+    except:
+        exceptions.handle(request, _('Unable to get all the accounts'))
+        return []
+
+def get_current_account(request):
+    token_ = request.session.get('token').id
+    #tenant_id = request.user.tenant_id
+    url_ = base.url_for(request, 'chargeback', 'publicURL')
+    headers = {"X-Auth-Token": "%s" % token_, 'Accept': 'application/json'}
+
+    try:
+        r = requests.get("%sapi/account/current" % url_, headers=headers, verify=False)
         data =r.json()
         return data
 
     except:
-        exceptions.handle(request, _('Unable to get accounts'))
+        exceptions.handle(request, _('Unable to get the current account'))
+        return []
+
+
+def get_account_cycle(request, account_id):
+    token_ = request.session.get('token').id
+    #tenant_id = request.user.tenant_id
+    url_ = base.url_for(request, 'chargeback', 'publicURL')
+    headers = {"X-Auth-Token": "%s" % token_, 'Accept': 'application/json'}
+
+    try:
+        print "voy a hacer esta llamada"
+        print "%sapi/account/%s/cycle" % (url_, account_id)
+        r = requests.get("%sapi/account/%s/cycle" % (url_, account_id), headers=headers, verify=False)
+        data = r.json()['cycles']
+        print data
+        return  data
+
+
+
+    except:
+        exceptions.handle(request, _('Unable to get cycles account'))
         return []

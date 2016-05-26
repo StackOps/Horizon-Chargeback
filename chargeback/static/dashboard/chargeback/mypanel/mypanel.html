@@ -1,5 +1,5 @@
-<div>
-  <table ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
+<div ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
+  <table >
     <thead>
       <tr>ID</tr>
       <tr>Name</tr>
@@ -7,12 +7,40 @@
       <tr>balance</tr>
     </thead>
     <tbody>
-      <tr ng-repeat="r in ctrl.items">
-        <td>{$ r.id $}</td>
-        <td>{$ r.name $}</td>
-        <td>{$ r.balance $}</td>
-        <td>{$ r.description $}</td>
+      <tr ng-model="ctrl.account">
+        <td>{$ ctrl.account.id $} </td>
+        <td>{$ ctrl.account.name $} </td>
+        <td>{$ ctrl.account.balance $} </td>
+        <td>{$ ctrl.account.description $} </td>
       </tr>
 
     </tbody>
   </table>
+  <table >
+    <thead>
+      <tr>Current</tr>
+      <tr>Discount</tr>
+      <tr>End</tr>
+      <tr>Start</tr>
+      <tr>Id</tr>
+      <tr>Promotion</tr>
+      <tr>Total</tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="r in ctrl.cycles">
+        <td>{$ r.current $} </td>
+        <td>{$ r.discount $} </td>
+        <td>{$ r.end $} </td>
+        <td>{$ r.start $} </td>
+        <td>{$ r.id $} </td>
+        <td>{$ r.promotion $} </td>
+        <td>{$ r.total $} </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <div ng-repeat="r in ctrl.cycles">
+    <!-- {$ r $} -->
+    <cycles-template cycle='r'></cycles-template>
+  </div>
+</div>

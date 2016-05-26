@@ -11,10 +11,27 @@
 
   function myPluginController($http, chargebackAPI) {
     var ctrl = this;
-    ctrl.items = [];
-    chargebackAPI.getCurrentAccount().then(function(data){
-      ctrl.items = data.data;
-    });
+    ctrl.items = {};
+    ctrl.cycles = [];
+    // chargebackAPI.getCurrentAccount().then(function(data){
+    //   console.log(data)
+    //   ctrl.account = data.data.account
+    //   ctrl.items = data.data;
+    // });
+
+    var call_ = function(){
+      chargebackAPI.getCurrentAccount().then(function(data){
+        ctrl.account = data.data.account
+        chargebackAPI.getCyclesAccount(ctrl.account.id).then(function(cycles){
+          ctrl.cycles = cycles.data
+        });
+      });
+    };
+
+    call_()
+
+
+
     // ctrl.items = [
     //   { name: 'abc', id: 123 },
     //   { name: 'efg', id: 345 },

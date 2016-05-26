@@ -1,0 +1,13 @@
+<div class="cycle-box">
+  <div class="cycle-title">
+    <p class="title-text"> cycle {$ cycles.cycle.current $}</p>
+  </div>
+  <div class="box-el">
+    <p class="text">start: {$ cycles.cycle.start*1000  | date $} - end: {$ cycles.cycle.end * 1000 | date $}</p>
+  </div>
+  <div class="clear-double"></div>
+  <div class="clear"></div>
+  <div class="box-el total">
+    Total: {$ cycles.cycle.total $}
+  </div>
+</div>
