@@ -13,29 +13,30 @@
     var ctrl = this;
     ctrl.items = {};
     ctrl.cycles = [];
-    // chargebackAPI.getCurrentAccount().then(function(data){
-    //   console.log(data)
-    //   ctrl.account = data.data.account
-    //   ctrl.items = data.data;
-    // });
+    ctrl.projects = [];
 
-    var call_ = function(){
-      chargebackAPI.getCurrentAccount().then(function(data){
-        ctrl.account = data.data.account
-        chargebackAPI.getCyclesAccount(ctrl.account.id).then(function(cycles){
-          ctrl.cycles = cycles.data
-        });
+
+    chargebackAPI.getCurrentAccount().then(function(data){
+      ctrl.account = data.data.account;
+      chargebackAPI.getCyclesAccount(ctrl.account.id).then(function(cycles){
+        ctrl.cycles = cycles.data;
+      });
+    });
+
+    ctrl.loadProject = function(cycle){
+      chargebackAPI.getProjectsCycle(cycle.id).then(function(data){
+        ctrl.projects = data.data;
       });
     };
 
-    call_()
+    ctrl.loadProduct = function(project){
+      chargebackAPI.getProductsProject(project.id)
+      .then(function(data){
+        ctrl.products = data.data;
+      });
+    };
 
 
 
-    // ctrl.items = [
-    //   { name: 'abc', id: 123 },
-    //   { name: 'efg', id: 345 },
-    //   { name: 'hij', id: 678 }
-    // ];
   }
 })();

@@ -1,8 +1,22 @@
-<div ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
+<div class="container-fluid" ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
   <div class="account-header">
     Account: {$ ctrl.account.name $}
   </div>
-  <div ng-repeat="r in ctrl.cycles">
-    <cycles-template cycle='r'></cycles-template>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div ng-repeat="r in ctrl.cycles" ng-click="ctrl.loadProject(r)" >
+        <cycles-template cycle='r' ></cycles-template>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4" >
+      <div ng-repeat="p in ctrl.projects" ng-click="ctrl.loadProduct(p)">
+        <projects-template project='p'></projects-template>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4" >
+      <div ng-repeat="product in ctrl.products">
+        <products-template product="product"></products-template>
+      </div>
+    </div>
   </div>
 </div>

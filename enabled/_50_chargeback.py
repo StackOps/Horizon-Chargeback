@@ -15,6 +15,8 @@ ADD_JS_FILES = [
     'dashboard/chargeback/mypanel/mypanel.module.js',
     'dashboard/chargeback/mypanel/account.service.js',
     'dashboard/widgets/cycles.directive.js',
+    'dashboard/widgets/projects.directive.js',
+    'dashboard/widgets/products.directive.js',
 ]
 
 ADD_SCSS_FILES = [

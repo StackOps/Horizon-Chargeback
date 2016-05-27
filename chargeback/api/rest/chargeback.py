@@ -59,9 +59,6 @@ class Accounts(generic.View):
         """
         return  []
 
-
-
-
 @urls.register
 class Cycles(generic.View):
     '''API for cycles
@@ -71,3 +68,25 @@ class Cycles(generic.View):
     @rest_utils.ajax()
     def get(self, request, account_id):
         return api.chargeback.get_account_cycle(request, account_id)
+
+
+@urls.register
+class Projects(generic.View):
+    '''API for cycles
+    '''
+    url_regex = r'cycle/(?P<cycle_id>[^/]+)/project$'
+
+    @rest_utils.ajax()
+    def get(self, request, cycle_id):
+        return api.chargeback.get_projects_cycle(request, cycle_id)
+
+
+@urls.register
+class Projects(generic.View):
+    '''API for cycles
+    '''
+    url_regex = r'project/(?P<project_id>[^/]+)/product$'
+
+    @rest_utils.ajax()
+    def get(self, request, project_id):
+        return api.chargeback.get_products_project(request, project_id)

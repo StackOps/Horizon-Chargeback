@@ -86,15 +86,43 @@ def get_account_cycle(request, account_id):
     headers = {"X-Auth-Token": "%s" % token_, 'Accept': 'application/json'}
 
     try:
-        print "voy a hacer esta llamada"
         print "%sapi/account/%s/cycle" % (url_, account_id)
         r = requests.get("%sapi/account/%s/cycle" % (url_, account_id), headers=headers, verify=False)
         data = r.json()['cycles']
-        print data
         return  data
 
 
 
     except:
         exceptions.handle(request, _('Unable to get cycles account'))
+        return []
+
+def get_projects_cycle(request, cycle_id):
+    token_ = request.session.get('token').id
+    #tenant_id = request.user.tenant_id
+    url_ = base.url_for(request, 'chargeback', 'publicURL')
+    headers = {"X-Auth-Token": "%s" % token_, 'Accept': 'application/json'}
+
+    try:
+        r = requests.get("%sapi/cycle/%s/project" % (url_, cycle_id), headers=headers, verify=False)
+        data = r.json()['projects']
+        return  data
+
+    except:
+        exceptions.handle(request, _('Unable to get cycles account'))
+        return []
+
+def get_products_project(request, project_id):
+    token_ = request.session.get('token').id
+    #tenant_id = request.user.tenant_id
+    url_ = base.url_for(request, 'chargeback', 'publicURL')
+    headers = {"X-Auth-Token": "%s" % token_, 'Accept': 'application/json'}
+
+    try:
+        r = requests.get("%sapi/project/%s/product" % (url_, project_id), headers=headers, verify=False)
+        data = r.json()['products']
+        return  data
+
+    except:
+        exceptions.handle(request, _('Unable to get products project'))
         return []

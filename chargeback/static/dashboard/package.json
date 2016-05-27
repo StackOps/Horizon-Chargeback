@@ -1,0 +1,24 @@
+{
+  "name": "ChargebackHorizon",
+  "version": "0.0.0",
+  "private": "horizon",
+  "description": "Stackops Chargeback Service",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StackOps/Horizon-Chargeback.git"
+  },
+  "author": "Lissete Moscoso León",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/StackOps/Horizon-Chargeback/issues"
+  },
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-animate": "^1.5.5",
+    "angular-aria": "^1.5.5",
+    "angular-material": "^1.1.0-rc4-master-06e7e99"
+  }
+}
