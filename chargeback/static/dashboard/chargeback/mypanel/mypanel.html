@@ -3,19 +3,19 @@
     Account: {$ ctrl.account.name $}
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <div ng-repeat="r in ctrl.cycles" ng-click="ctrl.loadProject(r)" >
-        <cycles-template cycle='r' ></cycles-template>
+    <div class="col-sm-12 col-md-4">
+      <div ng-class="{'selected': ctrl.cycle_selected==r}" ng-repeat="r in ctrl.cycles" ng-click="ctrl.loadProject(r)" >
+        <cycle cycle='r' currency=ctrl.currency ></cycle>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4" >
-      <div ng-repeat="p in ctrl.projects" ng-click="ctrl.loadProduct(p)">
-        <projects-template project='p'></projects-template>
+    <div class="col-sm-12 col-md-4" >
+      <div ng-class="{'selected': ctrl.project_selected==p}" ng-repeat="p in ctrl.projects" ng-click="ctrl.loadProduct(p)">
+        <project project='p' currency=ctrl.currency></project>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4" >
+    <div class="col-sm-12 col-md-4" >
       <div ng-repeat="product in ctrl.products">
-        <products-template product="product"></products-template>
+        <product product="product" currency=ctrl.currency></product>
       </div>
     </div>
   </div>

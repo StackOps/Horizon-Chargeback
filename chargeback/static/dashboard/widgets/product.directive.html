@@ -1,0 +1,22 @@
+<div class="cycle-box">
+  <div class="cycle-title">
+    <img ng-src="/static/dashboard/images/product_16x16.png" />
+    <p class="title-text"> Product: {$ ctrl.product.productType.description $}</p>
+  </div>
+
+  <product-resource ng-repeat="resource in ctrl.product.resources"
+  resource="resource" currency=ctrl.currency></product-resource>
+
+
+  <div class="clear"></div>
+  <div class="box-el">
+    <p class="key long>"> BaseFee</p><p class="value">  {$ ctrl.product.baseFee | currency : ctrl.currency.name $} </p>
+  </div>
+  <div class="box-el">
+    <p class="key long>">Discount</p><p class="value"> {$ ctrl.product.discount  $}%</p>
+  </div>
+
+  <div class="box-el total">
+    <p class="key">Total:</p><p class="value"> {$ ctrl.product.total | currency : ctrl.currency.name $} </p>
+  </div>
+</div>

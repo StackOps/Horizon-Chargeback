@@ -14,9 +14,10 @@ ADD_ANGULAR_MODULES = ['horizon.dashboard.chargeback.mypanel']
 ADD_JS_FILES = [
     'dashboard/chargeback/mypanel/mypanel.module.js',
     'dashboard/chargeback/mypanel/account.service.js',
-    'dashboard/widgets/cycles.directive.js',
-    'dashboard/widgets/projects.directive.js',
-    'dashboard/widgets/products.directive.js',
+    'dashboard/widgets/cycle.directive.js',
+    'dashboard/widgets/project.directive.js',
+    'dashboard/widgets/product.directive.js',
+    'dashboard/widgets/productResource.directive.js',
 ]
 
 ADD_SCSS_FILES = [

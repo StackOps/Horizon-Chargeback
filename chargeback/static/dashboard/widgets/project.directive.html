@@ -1,0 +1,10 @@
+<div class="cycle-box">
+  <div class="cycle-title">
+    <img width="16" height="16" ng-src="/static/dashboard/images/project_16x16.png" />
+    <p class="title-text"> Project: {$ ctrl.project.tenant.account.name $}
+  </div>
+  <div class="clear"></div>
+  <div class="box-el total">
+    <p class="key">Total:</p><p class="value">{$ ctrl.project.total | currency : ctrl.currency.name $}</p>
+  </div>
+</div>
