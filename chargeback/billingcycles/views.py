@@ -16,7 +16,7 @@ from horizon import views
 
 class IndexView(views.APIView):
     # table_class = instance_tables.InstancesTable
-    template_name = 'chargeback/mypanel/index.html'
+    template_name = 'chargeback/billingcycles/index.html'
 
     # def get_data(self):
     #     # Add data to the context here...

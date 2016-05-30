@@ -9,22 +9,17 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
+
 from django.utils.translation import ugettext_lazy as _
 
-from horizon import tables
+import horizon
+
+from openstack_dashboard.dashboards.chargeback import dashboard
 
 
-class MyFilterAction(tables.FilterAction):
-    name = "myfilter"
+class BillingCyclespanel(horizon.Panel):
+    name = _("Billing Cycles")
+    slug = "billingcycles"
 
 
-class InstancesTable(tables.DataTable):
-    id = tables.Column('id', verbose_name=_("ID"))
-    name = tables.Column('name',  verbose_name=_("Name"))
-    description = tables.Column('description', verbose_name=_("Description"))
-    balance = tables.Column('balance', verbose_name=_("Balance"))
-
-    class Meta:
-        name = "instances"
-        verbose_name = _("Instances")
-        table_actions = (MyFilterAction,)
+dashboard.Mydashboard.register(BillingCyclespanel)

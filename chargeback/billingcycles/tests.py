@@ -10,16 +10,10 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from django.utils.translation import ugettext_lazy as _
-
-import horizon
-
-from openstack_dashboard.dashboards.chargeback import dashboard
+from horizon.test import helpers as test
 
 
-class Mypanel(horizon.Panel):
-    name = _("Mypanel")
-    slug = "mypanel"
-
-
-dashboard.Mydashboard.register(Mypanel)
+class BillingCyclespanelTests(test.TestCase):
+    # Unit tests for billingcycles.
+    def test_me(self):
+        self.assertTrue(1 + 1 == 2)

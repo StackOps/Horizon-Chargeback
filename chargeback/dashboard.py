@@ -16,15 +16,15 @@ import horizon
 
 class Chargebackgroup(horizon.PanelGroup):
     slug = "mygroup"
-    name = _("My Group")
-    panels = ('mypanel',)
+    name = _("Billing and Payments")
+    panels = ('billingcycles',)
 
 
 class Mydashboard(horizon.Dashboard):
     name = _("Chargeback")
     slug = "chargeback"
     panels = (Chargebackgroup,)  # Add your panels here.
-    default_panel = 'mypanel'  # Specify the slug of the default panel.
+    default_panel = 'billingcycles'  # Specify the slug of the default panel.
 
 
 horizon.register(Mydashboard)
