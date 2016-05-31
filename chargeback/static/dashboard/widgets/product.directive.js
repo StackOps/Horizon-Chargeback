@@ -27,7 +27,8 @@
       controller : ProductController,
       scope : {
         product : '=product',
-        currency : '=currency'
+        currency : '=currency',
+        hidezerovalue : '=hidezerovalue'
       },
       templateUrl : '/static/dashboard/widgets/product.directive.html'
     };

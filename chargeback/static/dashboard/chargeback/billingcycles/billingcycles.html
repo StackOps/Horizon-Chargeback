@@ -1,7 +1,16 @@
 <div class="container-fluid" ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
-  <div class="account-header">
-    Account: {$ ctrl.account.name $}
+
+  <div class="row">
+    <div class="account-header col-md-8 col-sm-12">
+      Account: {$ ctrl.account.name $}
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <label> <input type="checkbox"
+       ng-model="ctrl.hide_zero_value">
+       Hide resources with zero value</label>
+    </div>
   </div>
+
   <div class="row">
     <div class="col-sm-12 col-md-4 right-border-only">
       <div ng-class="{'selected': ctrl.cycle_selected==r}" ng-repeat="r in ctrl.cycles" ng-click="ctrl.loadProject(r)" >
@@ -15,7 +24,7 @@
     </div>
     <div class="col-sm-12 col-md-4 right-border-only" >
       <div ng-repeat="product in ctrl.products">
-        <product product="product" currency=ctrl.currency></product>
+        <product product="product" currency=ctrl.currency hidezerovalue=ctrl.hide_zero_value></product>
       </div>
     </div>
   </div>

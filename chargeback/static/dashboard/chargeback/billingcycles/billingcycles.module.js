@@ -32,6 +32,7 @@
     ctrl.products = [];
     ctrl.cycle_selected = null;
     ctrl.project_selected = null;
+    ctrl.hide_zero_value = true;
 
     chargebackAPI.getCurrentAccount().then(function(data){
       ctrl.account = data.data.account;

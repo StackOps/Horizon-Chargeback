@@ -4,8 +4,11 @@
     <p class="title-text"> Product: {$ ctrl.product.productType.description $}</p>
   </div>
 
-  <product-resource ng-repeat="resource in ctrl.product.resources"
-  resource="resource" currency=ctrl.currency></product-resource>
+  <div ng-hide="ctrl.hidezerovalue && !ctrl.product.total">
+    <product-resource  ng-repeat="resource in ctrl.product.resources"
+    resource="resource" currency=ctrl.currency></product-resource>
+  </div>
+
 
 
   <div class="clear"></div>
