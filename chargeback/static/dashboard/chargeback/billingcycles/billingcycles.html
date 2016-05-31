@@ -3,17 +3,17 @@
     Account: {$ ctrl.account.name $}
   </div>
   <div class="row">
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-4 right-border-only">
       <div ng-class="{'selected': ctrl.cycle_selected==r}" ng-repeat="r in ctrl.cycles" ng-click="ctrl.loadProject(r)" >
         <cycle cycle='r' currency=ctrl.currency ></cycle>
       </div>
     </div>
-    <div class="col-sm-12 col-md-4" >
+    <div class="col-sm-12 col-md-4 right-border-only" >
       <div ng-class="{'selected': ctrl.project_selected==p}" ng-repeat="p in ctrl.projects" ng-click="ctrl.loadProduct(p)">
         <project project='p' currency=ctrl.currency></project>
       </div>
     </div>
-    <div class="col-sm-12 col-md-4" >
+    <div class="col-sm-12 col-md-4 right-border-only" >
       <div ng-repeat="product in ctrl.products">
         <product product="product" currency=ctrl.currency></product>
       </div>
