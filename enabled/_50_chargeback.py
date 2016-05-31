@@ -18,10 +18,14 @@ ADD_JS_FILES = [
     'dashboard/widgets/project.directive.js',
     'dashboard/widgets/product.directive.js',
     'dashboard/widgets/productResource.directive.js',
+    'node_modules/angular-animate/angular-animate.js',
+    'node_modules/angular-aria/angular-aria.js',
+    'node_modules/angular-material/angular-material.js',
 ]
 
 ADD_SCSS_FILES = [
-    'static/dashboard/css/chargeback.css'
+    'static/dashboard/css/chargeback.css',
+    'static/node_modules/angular-material/angular-material.css',
 ]
 
-AUTO_DISCOVER_STATIC_FILES = True
+# AUTO_DISCOVER_STATIC_FILES = True

@@ -1,4 +1,29 @@
-<div class="container-fluid" ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
+<div layout="column"  ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
+  <div layout="row" class="account-header">
+    Account: {$ ctrl.account.name $}
+  </div>
+  <div flex layout-gt-sm="row" layout-xs="column" layout-align="space-around">
+    <div flex layout-margin flex-order-gt-sm="-1" flex-order-xs="-1">
+      <div ng-class="{'selected': ctrl.cycle_selected==r}" ng-repeat="r in ctrl.cycles" ng-click="ctrl.loadProject(r)" >
+        <cycle cycle='r' currency=ctrl.currency ></cycle>
+      </div>
+    </div>
+    <div flex layout-margin flex-order-gt-sm="1" flex-order-xs="1">
+      <div ng-class="{'selected': ctrl.project_selected==p}" ng-repeat="p in ctrl.projects" ng-click="ctrl.loadProduct(p)">
+        <project project='p' currency=ctrl.currency></project>
+      </div>
+    </div>
+    <div flex layout-margin flex-order-gt-sm="2" flex-order-xs="2">
+      <div ng-repeat="product in ctrl.products">
+        <product product="product" currency=ctrl.currency></product>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- <div class="container-fluid" ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
   <div class="account-header">
     Account: {$ ctrl.account.name $}
   </div>
@@ -19,4 +44,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

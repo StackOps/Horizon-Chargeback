@@ -33,6 +33,9 @@ This repository is used to visualize the Stackops-Chargeback service in Horizon.
 
 * git clone this repo to horizon/openstack_dashboard/dashboards/chargeback
 
+* cd to horizon/openstack_dashboard/dashboards/chargeback and make
+       npm install
+
 * from horizon directiony run ./run_tests.sh --runserver 0.0.0.0:8888
 
 * connect to openstack http://localhost:8888
