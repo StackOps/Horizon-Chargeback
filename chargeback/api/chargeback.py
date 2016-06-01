@@ -45,13 +45,26 @@ LOG = logging.getLogger(__name__)
 #         self.request = request
 
 
-def get_all_accounts(request):
+def get_all_accounts(request, status="A"):
     token_ = request.session.get('token').id
     url_ = base.url_for(request, 'chargeback', 'publicURL')
     headers = {"X-Auth-Token": "%s" % token_, 'Accept': 'application/json'}
 
     try:
-        r = requests.get("%s/api/account" % url_, headers=headers, verify=False)
+        r = requests.get("%sapi/account" % url_, headers=headers, verify=False)
+        data = r.json()
+        return data
+    except:
+        exceptions.handle(request, _('Unable to get all the accounts'))
+        return []
+
+def get_all_account_with_status(request, status="ACTIVE"):
+    token_ = request.session.get('token').id
+    url_ = base.url_for(request, 'chargeback', 'publicURL')
+    headers = {"X-Auth-Token": "%s" % token_, 'Accept': 'application/json'}
+
+    try:
+        r = requests.get("%sapi/account" % url_, headers=headers, verify=False)
         data = r.json()
         accounts = []
 

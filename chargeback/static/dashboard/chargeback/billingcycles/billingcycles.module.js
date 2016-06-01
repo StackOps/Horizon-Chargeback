@@ -22,9 +22,11 @@
       BillingCyclesController)
     ;
 
-  BillingCyclesController.$inject = [ '$http', 'horizon.app.core.openstack-service-api.chargeback'];
+  BillingCyclesController.$inject = [ '$http',
+  'horizon.app.core.openstack-service-api.chargeback',
+  'horizon.app.core.openstack-service-api.roles'];
 
-  function BillingCyclesController($http, chargebackAPI) {
+  function BillingCyclesController($http, chargebackAPI, rolesAPI) {
     var ctrl = this;
     ctrl.items = {};
     ctrl.cycles = [];
@@ -33,14 +35,53 @@
     ctrl.cycle_selected = null;
     ctrl.project_selected = null;
     ctrl.hide_zero_value = true;
+    ctrl.role_admin = false;
+    ctrl.accounts =[];
 
-    chargebackAPI.getCurrentAccount().then(function(data){
-      ctrl.account = data.data.account;
-      ctrl.currency = ctrl.account.currency;
-      chargebackAPI.getCyclesAccount(ctrl.account.id).then(function(cycles){
+
+
+    rolesAPI.getRoles().then(function(data){
+      var roles = {};
+      data.data.forEach(function(role){
+        roles[role.name] = true;
+      });
+      rolesAPI.updateRoles(roles);
+      if(rolesAPI.hasRole('admin')){
+        ctrl.role_admin = true;
+        ctrl.loadAccounts();
+      }
+      else{
+        ctrl.loadCurrentAccount();
+      }
+    });
+
+    ctrl.loadCurrentAccount = function(){
+      chargebackAPI.getCurrentAccount()
+      .then(function(data){
+        ctrl.account = data.data.account;
+        ctrl.currency = ctrl.account.currency;
+        ctrl.loadCycles(ctrl.account.id);
+      });
+    };
+
+    ctrl.loadCycles = function(account_id){
+      ctrl.cycles = [];
+      ctrl.projects = [];
+      ctrl.products = [];
+      chargebackAPI.getCyclesAccount(account_id)
+      .then(function(cycles){
         ctrl.cycles = cycles.data;
       });
-    });
+    };
+
+    ctrl.loadAccounts = function(){
+      chargebackAPI.getAccounts()
+      .then(function(data){
+        ctrl.accounts = data.data.accounts;
+      });
+    };
+
+
     ctrl.loadProject = function(cycle){
       ctrl.projects = [];
       ctrl.products = [];

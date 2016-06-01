@@ -18,9 +18,9 @@
 
   angular
     .module('horizon.app.core.openstack-service-api')
-    .factory('horizon.app.core.openstack-service-api.chargeback', chargebackAPI);
+    .factory('horizon.app.core.openstack-service-api.roles', rolesAPI);
 
-  chargebackAPI.$inject = [
+  rolesAPI.$inject = [
     'horizon.framework.util.http.service',
     'horizon.framework.widgets.toast.service'
   ];
@@ -33,23 +33,27 @@
    * @description Provides access to Neutron APIs.
    * @returns {Object} The service
    */
-  function chargebackAPI(apiService, toastService) {
+  function rolesAPI(apiService, toastService) {
     var service = {
-      getAccounts : getAccounts,
-      getCurrentAccount : getCurrentAccount,
-      getCyclesAccount : getCyclesAccount,
-      getProjectsCycle : getProjectsCycle,
-      getProductsProject : getProductsProject
+      getRoles : getRoles,
+      hasRole : hasRole,
+      updateRoles : updateRoles,
+      getRoleList : getRoleList
     };
 
+    var roles = {};
 
-    function getAccounts(){
-      return apiService.get('/api/account')
-      .error(function(){
-        toastService.add('error', 'Unable to retrieve the account list');
-      });
+    function updateRoles(new_roles){
+      roles = new_roles;
     }
 
+    function getRoleList(){
+      return roles;
+    }
+
+    function hasRole(role){
+      return roles[role];
+    }
 
     // Networks
 
@@ -60,33 +64,22 @@
      *
      * @returns {Object} An object with property "items". Each item is a network.
      */
-    function getCurrentAccount() {
-      return apiService.get('/api/account/current')
+    function getRoles() {
+      return apiService.get('/api/user/roles')
         .error(function () {
           toastService.add('error', 'Unable to retrieve the current1211 account');
         });
     }
 
-    function getCyclesAccount(account_id){
-      return apiService.get('/api/account/'+ account_id + '/cycle')
-      .error(function(){
-        toastService.add('error', 'Unable to retrieve the cycles for the account' + account_id);
+    function listRoles(){
+      return getRoles().then(function(data){
+        data.data.forEach(function(role){
+          roles[role.name] = true;
+        });
       });
     }
 
-    function getProjectsCycle(cycle_id){
-      return apiService.get('/api/cycle/'+ cycle_id + '/project')
-      .error(function(){
-        toastService.add('error', 'Unable to retrieve the project for the cycle' + cycle_id);
-      });
-    }
 
-    function getProductsProject(project_id){
-      return apiService.get('/api/project/'+ project_id + '/product')
-      .error(function(){
-        toastService.add('error', 'Unable to retrieve the products for the project' + project_id);
-      });
-    }
 
     return service;
 

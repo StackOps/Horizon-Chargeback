@@ -57,7 +57,8 @@ class Accounts(generic.View):
         The listing result is an object with property "items".  Each item is
         a network.
         """
-        return  []
+        return api.chargeback.get_all_accounts(request)
+
 
 @urls.register
 class Cycles(generic.View):

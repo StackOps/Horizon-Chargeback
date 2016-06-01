@@ -1,8 +1,22 @@
 <div class="container-fluid" ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
 
   <div class="row">
-    <div class="account-header col-md-8 col-sm-12">
+    <div ng-if="!ctrl.role_admin" class="account-header col-md-8 col-sm-12">
       Account: {$ ctrl.account.name $}
+    </div>
+    <div ng-if="ctrl.role_admin" class="account-header col-md-8 col-sm-12">
+
+      <label style="display:inline">Account:
+      <select style="display:inline" 
+       ng-options="account.name for account in ctrl.accounts track by account.id"
+       ng-model="ctrl.account"
+       ng-change=ctrl.loadCycles(ctrl.account.id)>
+      <option value="" disabled selected>Select an account</option>
+      </select></label>
+
+
+
+
     </div>
     <div class="col-md-4 col-sm-12">
       <label> <input type="checkbox"
