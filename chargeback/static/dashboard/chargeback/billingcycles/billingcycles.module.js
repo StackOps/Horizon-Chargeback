@@ -23,11 +23,14 @@
     ;
 
   BillingCyclesController.$inject = [ '$http',
+  '$modal',
+  'horizon.framework.widgets.toast.service',
   'horizon.app.core.openstack-service-api.chargeback',
   'horizon.app.core.openstack-service-api.roles'];
 
-  function BillingCyclesController($http, chargebackAPI, rolesAPI) {
+  function BillingCyclesController($http, $modal, toastService, chargebackAPI, rolesAPI) {
     var ctrl = this;
+    ctrl.account = {};
     ctrl.items = {};
     ctrl.cycles = [];
     ctrl.projects = [];
@@ -37,7 +40,6 @@
     ctrl.hide_zero_value = true;
     ctrl.role_admin = false;
     ctrl.accounts =[];
-
 
 
     rolesAPI.getRoles().then(function(data){
@@ -56,21 +58,30 @@
     });
 
     ctrl.loadCurrentAccount = function(){
+      horizon.modals.modal_spinner('Loading...');
       chargebackAPI.getCurrentAccount()
       .then(function(data){
-        ctrl.account = data.data.account;
-        ctrl.currency = ctrl.account.currency;
-        ctrl.loadCycles(ctrl.account.id);
+        if(!data.data.account){
+          toastService.add('error', data.data.message);
+          horizon.modals.spinner.modal('hide');
+        }
+        else{
+          ctrl.account = data.data.account;
+          ctrl.currency = ctrl.account.currency;
+          ctrl.loadCycles(ctrl.account.id);
+        }
       });
     };
 
     ctrl.loadCycles = function(account_id){
+      horizon.modals.modal_spinner('Loading...');
       ctrl.cycles = [];
       ctrl.projects = [];
       ctrl.products = [];
       chargebackAPI.getCyclesAccount(account_id)
       .then(function(cycles){
         ctrl.cycles = cycles.data;
+        horizon.modals.spinner.modal('hide');
       });
     };
 
@@ -86,15 +97,19 @@
       ctrl.projects = [];
       ctrl.products = [];
       ctrl.cycle_selected = cycle;
+      horizon.modals.modal_spinner('Loading...');
       chargebackAPI.getProjectsCycle(cycle.id).then(function(data){
         ctrl.projects = data.data;
+        horizon.modals.spinner.modal('hide');
       });
     };
     ctrl.loadProduct = function(project){
       ctrl.project_selected = project;
+      horizon.modals.modal_spinner('Loading...');
       chargebackAPI.getProductsProject(project.id)
       .then(function(data){
         ctrl.products = data.data;
+        horizon.modals.spinner.modal('hide');
       });
     };
   }
