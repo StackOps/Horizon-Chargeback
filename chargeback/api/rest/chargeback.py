@@ -102,5 +102,5 @@ class Status(generic.View):
     url_regex = r'account/status$'
 
     @rest_utils.ajax()
-    def get(self, request, project_id):
+    def get(self, request):
         return api.chargeback.get_status_account(request)

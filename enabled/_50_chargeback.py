@@ -14,11 +14,13 @@ ADD_ANGULAR_MODULES = ['horizon.dashboard.chargeback.billingcycles',
 
 ADD_JS_FILES = [
     'dashboard/chargeback/billingcycles/billingcycles.module.js',
+    'dashboard/chargeback/billingcycles/billingcycles.controller.js',
     'dashboard/chargeback/payments/payments.module.js',
+    'dashboard/chargeback/payments/payments.controller.js',
 
     'dashboard/chargeback/services/roles.service.js',
     'dashboard/chargeback/services/chargeback.service.js',
-    
+
     'dashboard/widgets/cycle.directive.js',
     'dashboard/widgets/project.directive.js',
     'dashboard/widgets/product.directive.js',

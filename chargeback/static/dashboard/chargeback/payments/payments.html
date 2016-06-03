@@ -1,0 +1,33 @@
+<div class="container-fluid" ng-controller="horizon.dashboard.chargeback.PaymentsController as ctrl">
+  <div ng-if="ctrl.history.length">
+    <hz-dynamic-table config="ctrl.config" items="ctrl.items" safe-src-items="ctrl.history"></hz-dynamic-table>
+
+
+    <table st-table="ctrl.fakeData" st-safe-src="ctrl.history" hz-table>
+      <thead>
+        <tr>
+          <!-- <th><input type="checkbox" hz-select-all="fakeData"/></th> -->
+          <!-- <th></th> -->
+          <th>Descripcion</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat-start="row in ctrl.fakeData">
+          <!-- <td><input type="checkbox" hz-select="row" ng-model="ctrl.selections[row.id].checked"></td> -->
+          <!-- <td><span class="fa fa-chevron-right" hz-expand-detail item="row.description"></span></td> -->
+          <td>{$ row.description $}</td>
+          <td>{$ row.amount $}</td>
+        </tr>
+        <tr class="detail-row" ng-repeat-end>
+          <td class="detail" colspan="3"></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+</div>
+
+
+
+</div>

@@ -15,32 +15,6 @@
  */
 (function() {
   'use strict';
-
   angular
-    .module('horizon.dashboard.chargeback.payments', [])
-    .controller('horizon.dashboard.chargeback.paymentscontroller',
-      PaymentsController)
-    ;
-
-  PaymentsController.$inject = [ '$http',
-  '$modal',
-  'horizon.framework.widgets.toast.service',
-  'horizon.app.core.openstack-service-api.chargeback',
-  'horizon.app.core.openstack-service-api.roles'];
-
-  function PaymentsController($http, $modal, toastService, chargebackAPI, rolesAPI) {
-    var ctrl = this;
-    ctrl.account = {};
-    ctrl.items = {};
-    ctrl.cycles = [];
-    ctrl.projects = [];
-    ctrl.products = [];
-    ctrl.cycle_selected = null;
-    ctrl.project_selected = null;
-    ctrl.hide_zero_value = true;
-    ctrl.role_admin = false;
-    ctrl.accounts =[];
-
-
-  }
+    .module('horizon.dashboard.chargeback.payments', []);
 })();

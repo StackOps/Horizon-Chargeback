@@ -36,6 +36,7 @@
   function chargebackAPI(apiService, toastService) {
     var service = {
       getAccounts : getAccounts,
+      getStatus : getStatus,
       getCurrentAccount : getCurrentAccount,
       getCyclesAccount : getCyclesAccount,
       getProjectsCycle : getProjectsCycle,
@@ -85,6 +86,13 @@
       return apiService.get('/api/project/'+ project_id + '/product')
       .error(function(){
         toastService.add('error', 'Unable to retrieve the products for the project' + project_id);
+      });
+    }
+
+    function getStatus(){
+      return apiService.get('/api/account/status')
+      .error(function(){
+        toastService.add('error', 'Unabled to retrueve the status of the current account');
       });
     }
 
