@@ -139,3 +139,18 @@ def get_products_project(request, project_id):
     except:
         exceptions.handle(request, _('Unable to get products project'))
         return []
+
+
+def get_status_account(request):
+    token_ = request.session.get('token').id
+    #tenant_id = request.user.tenant_id
+    url_ = base.url_for(request, 'chargeback', 'publicURL')
+    headers = {"X-Auth-Token": "%s" % token_, 'Accept': 'application/json'}
+    try:
+        r = requests.get("%sapi/account/status" % url_, headers=headers, verify=False)
+        data = r.json()
+        return data
+
+    except:
+        exceptions.handle(request, _('Unable to get the status of the account'))
+        return []

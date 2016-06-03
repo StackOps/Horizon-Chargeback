@@ -10,7 +10,7 @@
       <select class="select-accounts"
        ng-options="account.name for account in ctrl.accounts| orderBy:'name' track by account.id"
        ng-model="ctrl.account"
-       ng-change=ctrl.loadCycles(ctrl.account.id)>
+       ng-change=ctrl.loadAccount(ctrl.account.id)>
       <option value="" disabled selected></option>
       </select></label>
 

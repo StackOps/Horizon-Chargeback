@@ -9,22 +9,14 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-from django.utils.translation import ugettext_lazy as _
 
-import horizon
+from django.conf.urls import patterns
+from django.conf.urls import url
 
-
-class Chargebackgroup(horizon.PanelGroup):
-    slug = "mygroup"
-    name = _("Billing and Payments")
-    panels = ('billingcycles', 'payments',)
+from openstack_dashboard.dashboards.chargeback.payments import views
 
 
-class Mydashboard(horizon.Dashboard):
-    name = _("Chargeback")
-    slug = "chargeback"
-    panels = (Chargebackgroup,)  # Add your panels here.
-    default_panel = 'billingcycles'  # Specify the slug of the default panel.
-
-
-horizon.register(Mydashboard)
+urlpatterns = patterns('',
+    url(r'^$',
+        views.IndexView.as_view(), name='index'),
+)

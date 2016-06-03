@@ -9,22 +9,20 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
+
+
+
 from django.utils.translation import ugettext_lazy as _
+from horizon import views
 
-import horizon
+class IndexView(views.APIView):
+    # table_class = instance_tables.InstancesTable
+    template_name = 'chargeback/payments/index.html'
+    page_title = _("Payments")
 
-
-class Chargebackgroup(horizon.PanelGroup):
-    slug = "mygroup"
-    name = _("Billing and Payments")
-    panels = ('billingcycles', 'payments',)
-
-
-class Mydashboard(horizon.Dashboard):
-    name = _("Chargeback")
-    slug = "chargeback"
-    panels = (Chargebackgroup,)  # Add your panels here.
-    default_panel = 'billingcycles'  # Specify the slug of the default panel.
-
-
-horizon.register(Mydashboard)
+    # def get_data(self):
+    #     # Add data to the context here...
+    #     return utils.getAccount(self)
+    def get_data(self, request, context, *args, **kwargs):
+        # Add data to the context here...
+        return context

@@ -9,12 +9,16 @@ ADD_INSTALLED_APPS = [
     'openstack_dashboard.dashboards.chargeback',
 ]
 
-ADD_ANGULAR_MODULES = ['horizon.dashboard.chargeback.billingcycles']
+ADD_ANGULAR_MODULES = ['horizon.dashboard.chargeback.billingcycles',
+'horizon.dashboard.chargeback.payments']
 
 ADD_JS_FILES = [
     'dashboard/chargeback/billingcycles/billingcycles.module.js',
-    'dashboard/chargeback/billingcycles/chargeback.service.js',
-    'dashboard/chargeback/billingcycles/roles/roles.service.js',
+    'dashboard/chargeback/payments/payments.module.js',
+
+    'dashboard/chargeback/services/roles.service.js',
+    'dashboard/chargeback/services/chargeback.service.js',
+    
     'dashboard/widgets/cycle.directive.js',
     'dashboard/widgets/project.directive.js',
     'dashboard/widgets/product.directive.js',

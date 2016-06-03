@@ -12,11 +12,13 @@
 
 
 
+from django.utils.translation import ugettext_lazy as _
 from horizon import views
 
 class IndexView(views.APIView):
     # table_class = instance_tables.InstancesTable
     template_name = 'chargeback/billingcycles/index.html'
+    page_title = _("Billing cycles")
 
     # def get_data(self):
     #     # Add data to the context here...

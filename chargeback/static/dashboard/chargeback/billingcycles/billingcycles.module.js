@@ -23,12 +23,12 @@
     ;
 
   BillingCyclesController.$inject = [ '$http',
-  '$modal',
+  'horizon.framework.widgets.modal-wait-spinner.service',
   'horizon.framework.widgets.toast.service',
   'horizon.app.core.openstack-service-api.chargeback',
   'horizon.app.core.openstack-service-api.roles'];
 
-  function BillingCyclesController($http, $modal, toastService, chargebackAPI, rolesAPI) {
+  function BillingCyclesController($http, WaitSpinnerService, toastService, chargebackAPI, rolesAPI) {
     var ctrl = this;
     ctrl.account = {};
     ctrl.items = {};
@@ -58,12 +58,12 @@
     });
 
     ctrl.loadCurrentAccount = function(){
-      horizon.modals.modal_spinner('Loading...');
+      WaitSpinnerService.showModalSpinner('Loading');
       chargebackAPI.getCurrentAccount()
       .then(function(data){
         if(!data.data.account){
           toastService.add('error', data.data.message);
-          horizon.modals.spinner.modal('hide');
+          WaitSpinnerService.hideModalSpinner();
         }
         else{
           ctrl.account = data.data.account;
@@ -73,15 +73,19 @@
       });
     };
 
+    ctrl.loadAccount = function(account_id){
+      WaitSpinnerService.showModalSpinner('Loading');
+      ctrl.loadCycles(account_id);
+    };
+
     ctrl.loadCycles = function(account_id){
-      horizon.modals.modal_spinner('Loading...');
       ctrl.cycles = [];
       ctrl.projects = [];
       ctrl.products = [];
       chargebackAPI.getCyclesAccount(account_id)
       .then(function(cycles){
         ctrl.cycles = cycles.data;
-        horizon.modals.spinner.modal('hide');
+        WaitSpinnerService.hideModalSpinner();
       });
     };
 
@@ -97,19 +101,19 @@
       ctrl.projects = [];
       ctrl.products = [];
       ctrl.cycle_selected = cycle;
-      horizon.modals.modal_spinner('Loading...');
+      WaitSpinnerService.showModalSpinner('Loading');
       chargebackAPI.getProjectsCycle(cycle.id).then(function(data){
         ctrl.projects = data.data;
-        horizon.modals.spinner.modal('hide');
+        WaitSpinnerService.hideModalSpinner();
       });
     };
     ctrl.loadProduct = function(project){
       ctrl.project_selected = project;
-      horizon.modals.modal_spinner('Loading...');
+      WaitSpinnerService.showModalSpinner('Loading');
       chargebackAPI.getProductsProject(project.id)
       .then(function(data){
         ctrl.products = data.data;
-        horizon.modals.spinner.modal('hide');
+        WaitSpinnerService.hideModalSpinner();
       });
     };
   }

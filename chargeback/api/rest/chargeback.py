@@ -91,3 +91,16 @@ class Projects(generic.View):
     @rest_utils.ajax()
     def get(self, request, project_id):
         return api.chargeback.get_products_project(request, project_id)
+
+
+
+
+@urls.register
+class Status(generic.View):
+    '''API for cycles
+    '''
+    url_regex = r'account/status$'
+
+    @rest_utils.ajax()
+    def get(self, request, project_id):
+        return api.chargeback.get_status_account(request)

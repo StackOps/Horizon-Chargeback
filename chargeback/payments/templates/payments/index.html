@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Payments" %}{% endblock %}
+
+{{ STATIC_URL }}
+
+{% block main %}
+  <ng-include
+    src="'{{ STATIC_URL }}dashboard/chargeback/payments/payments.html'">
+  </ng-include>
+{% endblock %}

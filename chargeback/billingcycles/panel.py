@@ -17,9 +17,9 @@ import horizon
 from openstack_dashboard.dashboards.chargeback import dashboard
 
 
-class BillingCyclespanel(horizon.Panel):
+class BillingCycles(horizon.Panel):
     name = _("Billing Cycles")
     slug = "billingcycles"
 
 
-dashboard.Mydashboard.register(BillingCyclespanel)
+dashboard.Mydashboard.register(BillingCycles)
