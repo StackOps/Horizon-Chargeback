@@ -18,7 +18,7 @@ from horizon import views
 class IndexView(views.APIView):
     # table_class = instance_tables.InstancesTable
     template_name = 'chargeback/payments/index.html'
-    page_title = _("Payments")
+    page_title = _("Credit and Payments")
 
     # def get_data(self):
     #     # Add data to the context here...

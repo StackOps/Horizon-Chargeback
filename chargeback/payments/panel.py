@@ -18,7 +18,7 @@ from openstack_dashboard.dashboards.chargeback import dashboard
 
 
 class Payments(horizon.Panel):
-    name = _("Payments")
+    name = _("Credit and Payments")
     slug = "payments"
 
 
