@@ -34,41 +34,29 @@
    * @returns {Object} The service
    */
   function rolesAPI(apiService, toastService) {
+    var roles = {};
     var service = {
       getRoles : getRoles,
       hasRole : hasRole,
       updateRoles : updateRoles,
       getRoleList : getRoleList
     };
+    return service;
 
-    var roles = {};
-
-    function updateRoles(new_roles){
-      roles = new_roles;
-    }
-
+    /////////////////
     function getRoleList(){
       return roles;
     }
 
-    function hasRole(role){
-      return roles[role];
-    }
-
-    // Networks
-
-    /**
-     * @name getNetworks
-     * @description
-     * Get a list of networks for a tenant.
-     *
-     * @returns {Object} An object with property "items". Each item is a network.
-     */
     function getRoles() {
       return apiService.get('/api/user/roles')
         .error(function () {
           toastService.add('error', 'Unable to retrieve the current1211 account');
         });
+    }
+
+    function hasRole(role){
+      return roles[role];
     }
 
     function listRoles(){
@@ -79,10 +67,9 @@
       });
     }
 
-
-
-    return service;
-
+    function updateRoles(new_roles){
+      roles = new_roles;
+    }
   }
 
 }());

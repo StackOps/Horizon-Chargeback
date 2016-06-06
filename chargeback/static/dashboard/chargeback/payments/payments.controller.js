@@ -27,34 +27,18 @@
     ctrl.config = {};
     ctrl.fakeTableData = [];
 
-    ctrl.loadData = function(){
+    loadData();
+
+    function loadData(){
       chargebackAPI.getStatus().then(function(data){
         create_table(data.data);
       });
-    };
-
-
-    var create_table = function(data){
-      var bag = data.bag;
-      ctrl.history = bag.history;
-      var currency_name = bag.currency.name;
-      var balance = 0;
-      var time = 0;
-
-      ctrl.history.forEach(function(h){
-        time += 1;
-        h.timestamp += time;
-        if(h.type === "OUT"){
-          h.balance = balance - Number(h.amount);
-          balance = balance - Number(h.amount);
-        }
-        else{
-          h.balance = balance + Number(h.amount);
-          balance = balance + Number(h.amount);
-        }
-      });
-
-      ctrl.config = {
+    }
+    /**
+    @param {String} currency
+    **/
+    function create_table_config(currency_name){
+      return {
         selectAll: false,
         expand : false,
         trackId : 'id',
@@ -75,13 +59,30 @@
           template: '<a target="_blank" ng-href="{$ item.invoice $}">{$ item.invoice $}</a>'
         }]
       };
-      // var div = $element;
-      // var child = $compile('<hz-dynamic-table config="ctrl.config" items="ctrl.fakeTableData" safe-src-items="ctrl.history">'+
-      // ' </hz-dynamic-table>')($scope);
-      // div.append(child);
+    }
+    /**
+    Records each item and sum the balance
+    **/
+    function create_table(data){
+      var bag = data.bag;
+      ctrl.history = bag.history;
+      var currency_name = bag.currency.name;
+      var balance = 0;
+      var time = 0;
 
-    };
-
-    ctrl.loadData();
+      ctrl.history.forEach(function(h){
+        time += 1;
+        h.timestamp += time;
+        if(h.type === "OUT"){
+          h.balance = balance - Number(h.amount);
+          balance = balance - Number(h.amount);
+        }
+        else{
+          h.balance = balance + Number(h.amount);
+          balance = balance + Number(h.amount);
+        }
+      });
+      ctrl.config = create_table_config(currency_name);
+    }
   }
 })();

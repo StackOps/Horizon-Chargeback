@@ -42,6 +42,7 @@
       getProjectsCycle : getProjectsCycle,
       getProductsProject : getProductsProject
     };
+    return service;
 
 
     function getAccounts(){
@@ -51,16 +52,6 @@
       });
     }
 
-
-    // Networks
-
-    /**
-     * @name getNetworks
-     * @description
-     * Get a list of networks for a tenant.
-     *
-     * @returns {Object} An object with property "items". Each item is a network.
-     */
     function getCurrentAccount() {
       return apiService.get('/api/account/current')
         .error(function () {
@@ -75,17 +66,17 @@
       });
     }
 
-    function getProjectsCycle(cycle_id){
-      return apiService.get('/api/cycle/'+ cycle_id + '/project')
-      .error(function(){
-        toastService.add('error', 'Unable to retrieve the project for the cycle' + cycle_id);
-      });
-    }
-
     function getProductsProject(project_id){
       return apiService.get('/api/project/'+ project_id + '/product')
       .error(function(){
         toastService.add('error', 'Unable to retrieve the products for the project' + project_id);
+      });
+    }
+
+    function getProjectsCycle(cycle_id){
+      return apiService.get('/api/cycle/'+ cycle_id + '/project')
+      .error(function(){
+        toastService.add('error', 'Unable to retrieve the project for the cycle' + cycle_id);
       });
     }
 
@@ -95,9 +86,6 @@
         toastService.add('error', 'Unabled to retrueve the status of the current account');
       });
     }
-
-    return service;
-
   }
 
 }());

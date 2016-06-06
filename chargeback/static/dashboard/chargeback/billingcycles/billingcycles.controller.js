@@ -31,33 +31,65 @@
   function BillingCyclesController($http, WaitSpinnerService, toastService, chargebackAPI, rolesAPI) {
     var ctrl = this;
     ctrl.account = {};
-    ctrl.items = {};
-    ctrl.cycles = [];
-    ctrl.projects = [];
-    ctrl.products = [];
-    ctrl.cycle_selected = null;
-    ctrl.project_selected = null;
-    ctrl.hide_zero_value = true;
-    ctrl.role_admin = false;
     ctrl.accounts =[];
+    ctrl.cycle_selected = null;
+    ctrl.cycles = [];
+    ctrl.hide_zero_value = true;
+    ctrl.items = {};
+    ctrl.loadAccount = loadAccount;
+    ctrl.loadAccounts = loadAccounts;
+    ctrl.loadCycles = loadCycles;
+    ctrl.loadCurrentAccount = loadCurrentAccount;
+    ctrl.loadProject = loadProject;
+    ctrl.loadProduct = loadProduct;
+    ctrl.products = [];
+    ctrl.project_selected = null;
+    ctrl.projects = [];
+    ctrl.role_admin = false;
 
+    getRoles();
 
-    rolesAPI.getRoles().then(function(data){
-      var roles = {};
-      data.data.forEach(function(role){
-        roles[role.name] = true;
+    function getRoles(){
+      rolesAPI.getRoles().then(function(data){
+        var roles = {};
+        data.data.forEach(function(role){
+          roles[role.name] = true;
+        });
+        rolesAPI.updateRoles(roles);
+        if(rolesAPI.hasRole('admin')){
+          ctrl.role_admin = true;
+          ctrl.loadAccounts();
+        }
+        else{
+          ctrl.loadCurrentAccount();
+        }
       });
-      rolesAPI.updateRoles(roles);
-      if(rolesAPI.hasRole('admin')){
-        ctrl.role_admin = true;
-        ctrl.loadAccounts();
-      }
-      else{
-        ctrl.loadCurrentAccount();
-      }
-    });
+    }
 
-    ctrl.loadCurrentAccount = function(){
+    function loadAccount(account_id){
+      WaitSpinnerService.showModalSpinner('Loading');
+      ctrl.loadCycles(account_id);
+    }
+
+    function loadAccounts(){
+      chargebackAPI.getAccounts()
+      .then(function(data){
+        ctrl.accounts = data.data.accounts;
+      });
+    }
+
+    function loadCycles(account_id){
+      ctrl.cycles = [];
+      ctrl.projects = [];
+      ctrl.products = [];
+      chargebackAPI.getCyclesAccount(account_id)
+      .then(function(cycles){
+        ctrl.cycles = cycles.data;
+        WaitSpinnerService.hideModalSpinner();
+      });
+    }
+
+    function loadCurrentAccount(){
       WaitSpinnerService.showModalSpinner('Loading');
       chargebackAPI.getCurrentAccount()
       .then(function(data){
@@ -71,33 +103,19 @@
           ctrl.loadCycles(ctrl.account.id);
         }
       });
-    };
+    }
 
-    ctrl.loadAccount = function(account_id){
+    function loadProduct(project){
+      ctrl.project_selected = project;
       WaitSpinnerService.showModalSpinner('Loading');
-      ctrl.loadCycles(account_id);
-    };
-
-    ctrl.loadCycles = function(account_id){
-      ctrl.cycles = [];
-      ctrl.projects = [];
-      ctrl.products = [];
-      chargebackAPI.getCyclesAccount(account_id)
-      .then(function(cycles){
-        ctrl.cycles = cycles.data;
+      chargebackAPI.getProductsProject(project.id)
+      .then(function(data){
+        ctrl.products = data.data;
         WaitSpinnerService.hideModalSpinner();
       });
-    };
+    }
 
-    ctrl.loadAccounts = function(){
-      chargebackAPI.getAccounts()
-      .then(function(data){
-        ctrl.accounts = data.data.accounts;
-      });
-    };
-
-
-    ctrl.loadProject = function(cycle){
+    function loadProject(cycle){
       ctrl.projects = [];
       ctrl.products = [];
       ctrl.cycle_selected = cycle;
@@ -106,15 +124,6 @@
         ctrl.projects = data.data;
         WaitSpinnerService.hideModalSpinner();
       });
-    };
-    ctrl.loadProduct = function(project){
-      ctrl.project_selected = project;
-      WaitSpinnerService.showModalSpinner('Loading');
-      chargebackAPI.getProductsProject(project.id)
-      .then(function(data){
-        ctrl.products = data.data;
-        WaitSpinnerService.hideModalSpinner();
-      });
-    };
+    }
   }
 })();
