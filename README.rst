@@ -5,6 +5,8 @@ Horizon-Chargeback (OpenStack Dashboard)
 
 This repository is used to visualize the Stackops-Chargeback service in Horizon.
 
+* git clone this repo to horizon/openstack_dashboard/dashboards/chargeback
+
 * Add import for the chargeback service in openstack_dashboard/api/__init__.py
        from openstack_dashboard.dashboards.chargeback.api import chargeback
 
@@ -31,7 +33,6 @@ This repository is used to visualize the Stackops-Chargeback service in Horizon.
 
 * Add the file enabled/_50_chargeback.py to horizon/openstack_dashboard/enabled/_50_chargeback.py
 
-* git clone this repo to horizon/openstack_dashboard/dashboards/chargeback
 
 * from horizon directiony run ./run_tests.sh --runserver 0.0.0.0:8888
 
