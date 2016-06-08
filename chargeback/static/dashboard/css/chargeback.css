@@ -363,11 +363,12 @@
 }
 
 .funds-title {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
-    color: #999999;
+    color: #2a6496;
     padding-top: 5px;
     font-family: palatino linotype, palatino, serif;
+    display: inline;
 }
 
 .payments-title .title-icon {

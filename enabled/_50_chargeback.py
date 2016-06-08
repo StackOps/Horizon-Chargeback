@@ -25,6 +25,9 @@ ADD_JS_FILES = [
     'dashboard/widgets/project.directive.js',
     'dashboard/widgets/product.directive.js',
     'dashboard/widgets/productResource.directive.js',
+    'dashboard/widgets/statusMessage.directive.js',
+    'dashboard/widgets/cbkCloudUsage.directive.js',
+    'dashboard/widgets/cbkBalance.directive.js',
 ]
 
 ADD_SCSS_FILES = [

@@ -23,16 +23,44 @@
 
   function PaymentsController (chargebackAPI){
     var ctrl = this;
+    var account = {};
     ctrl.history = [];
     ctrl.config = {};
     ctrl.fakeTableData = [];
+    ctrl.hasCredit = 'false';
+    ctrl.balance = 0;
+    ctrl.showMessage = false;
+    ctrl.warn = false;
+    ctrl.message = "";
+    ctrl.bag = {};
 
     loadData();
-
     function loadData(){
-      chargebackAPI.getStatus().then(function(data){
+      chargebackAPI.getStatus()
+      .then(function(data){
+        ctrl.bag = data.data.bag;
         create_table(data.data);
+        chargebackAPI.getCurrentAccount()
+        .then(function(data){
+          account = data.data.account;
+          ctrl.hasCredit = account.allowCredit;
+          ctrl.balance = account.balance;
+          ctrl.status = account.status;
+          if(ctrl.status === "CREATED"){
+            ctrl.showMessage = true;
+            ctrl.message = "pepppp";
+          }
+          else if (ctrl.status === "SUSPENDED"){
+            ctrl.showMessage = true;
+            ctrl.warn = true;
+            ctrl.message = "pepppp";
+          }
+          ctrl.remaining_balance = Number(account.balance) - Number(ctrl.bag.usage);
+          ctrl.consumption = Number(ctrl.bag.usage);
+          ctrl.currency_name = account.currency.name;
+        });
       });
+
     }
     /**
     @param {String} currency
