@@ -30,6 +30,7 @@ This repository is used to visualize the Stackops-Chargeback service in Horizon.
 * Add import for the chargeback service in openstack_dashboard/api/rest/__init__.py
 
         from openstack_dashboard.dashboards.chargeback.api.rest import chargeback
+        from openstack_dashboard.dashboards.chargeback.api.rest import roles
 
 * Add the file enabled/_50_chargeback.py to horizon/openstack_dashboard/enabled/_50_chargeback.py
 
