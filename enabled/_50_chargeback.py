@@ -5,11 +5,10 @@ DASHBOARD = 'chargeback'
 DISABLED = False
 
 # A list of applications to be added to INSTALLED_APPS.
-ADD_INSTALLED_APPS = [
-    'openstack_dashboard.dashboards.chargeback',
-]
+ADD_INSTALLED_APPS = ['chargeback']
 
-ADD_ANGULAR_MODULES = ['horizon.dashboard.chargeback.billingcycles',
+ADD_ANGULAR_MODULES = ['horizon.dashboard.chargeback',
+'horizon.dashboard.chargeback.billingcycles',
 'horizon.dashboard.chargeback.payments']
 
 ADD_JS_FILES = [

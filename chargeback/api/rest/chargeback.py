@@ -16,10 +16,11 @@
 
 from django.views import generic
 
-from openstack_dashboard import api
+# from openstack_dashboard import api
 from openstack_dashboard.api.rest import urls
 from openstack_dashboard.api.rest import utils as rest_utils
 from openstack_dashboard.api import base
+from openstack_dashboard.dashboards.chargeback.api import api
 
 #CLIENT_KEYWORDS = {'marker', 'sort_dir', 'paginate'}
 

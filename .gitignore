@@ -1,2 +1,4 @@
 chargeback/**/*.pyc
 node_modules
+dist
+chargeback.egg-info
