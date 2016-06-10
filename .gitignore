@@ -1,4 +1,7 @@
-chargeback/**/*.pyc
+chargeback_dashboard/**/*.pyc
 node_modules
 dist
-chargeback.egg-info
+chargeback_dashboard.egg-info
+django*.mo
+*.pyc
+ChangeLog

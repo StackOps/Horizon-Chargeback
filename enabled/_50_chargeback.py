@@ -5,7 +5,7 @@ DASHBOARD = 'chargeback'
 DISABLED = False
 
 # A list of applications to be added to INSTALLED_APPS.
-ADD_INSTALLED_APPS = ['chargeback']
+ADD_INSTALLED_APPS = ['chargeback_dashboard']
 
 ADD_ANGULAR_MODULES = ['horizon.dashboard.chargeback',
 'horizon.dashboard.chargeback.billingcycles',
