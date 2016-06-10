@@ -1,2 +1,2 @@
 include setup.py
-recursive-include chargeback *.py *.scss *.css *.html *.conf *.jpg *.gif *.png *.js
+recursive-include chargeback_dashboard *.py *.scss *.css *.html *.conf *.jpg *.gif *.png *.js

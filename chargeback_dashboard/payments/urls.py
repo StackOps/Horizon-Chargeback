@@ -13,7 +13,7 @@
 from django.conf.urls import patterns
 from django.conf.urls import url
 
-from chargeback.payments import views
+from chargeback_dashboard.payments import views
 
 
 urlpatterns = patterns('',

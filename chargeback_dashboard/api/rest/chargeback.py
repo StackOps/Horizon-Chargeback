@@ -20,7 +20,7 @@ from django.views import generic
 from openstack_dashboard.api.rest import urls
 from openstack_dashboard.api.rest import utils as rest_utils
 from openstack_dashboard.api import base
-from openstack_dashboard.dashboards.chargeback.api import api
+from chargeback_dashboard.api import chargeback
 
 #CLIENT_KEYWORDS = {'marker', 'sort_dir', 'paginate'}
 
@@ -40,7 +40,7 @@ class CurrentAccount(generic.View):
         The listing result is an object with property "items".  Each item is
         a network.
         """
-        return api.chargeback.get_current_account(request)
+        return chargeback.get_current_account(request)
 
 
 @urls.register
@@ -58,7 +58,7 @@ class Accounts(generic.View):
         The listing result is an object with property "items".  Each item is
         a network.
         """
-        return api.chargeback.get_all_accounts(request)
+        return chargeback.get_all_accounts(request)
 
 
 @urls.register
@@ -69,7 +69,7 @@ class Cycles(generic.View):
 
     @rest_utils.ajax()
     def get(self, request, account_id):
-        return api.chargeback.get_account_cycle(request, account_id)
+        return chargeback.get_account_cycle(request, account_id)
 
 
 @urls.register
@@ -80,7 +80,7 @@ class Projects(generic.View):
 
     @rest_utils.ajax()
     def get(self, request, cycle_id):
-        return api.chargeback.get_projects_cycle(request, cycle_id)
+        return chargeback.get_projects_cycle(request, cycle_id)
 
 
 @urls.register
@@ -91,7 +91,7 @@ class Projects(generic.View):
 
     @rest_utils.ajax()
     def get(self, request, project_id):
-        return api.chargeback.get_products_project(request, project_id)
+        return chargeback.get_products_project(request, project_id)
 
 
 
@@ -104,4 +104,4 @@ class Status(generic.View):
 
     @rest_utils.ajax()
     def get(self, request):
-        return api.chargeback.get_status_account(request)
+        return chargeback.get_status_account(request)

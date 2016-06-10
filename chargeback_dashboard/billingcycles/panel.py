@@ -10,13 +10,16 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from django.conf.urls import patterns
-from django.conf.urls import url
+from django.utils.translation import ugettext_lazy as _
 
-from chargeback.billingcycles import views
+import horizon
+
+from chargeback_dashboard import dashboard
 
 
-urlpatterns = patterns('',
-    url(r'^$',
-        views.IndexView.as_view(), name='index'),
-)
+class BillingCycles(horizon.Panel):
+    name = _("Billing Cycles")
+    slug = "billingcycles"
+
+
+dashboard.Mydashboard.register(BillingCycles)

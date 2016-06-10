@@ -14,12 +14,12 @@ from django.utils.translation import ugettext_lazy as _
 
 import horizon
 
-from chargeback import dashboard
+from chargeback_dashboard import dashboard
 
 
-class BillingCycles(horizon.Panel):
-    name = _("Billing Cycles")
-    slug = "billingcycles"
+class Payments(horizon.Panel):
+    name = _("Credit and Payments")
+    slug = "payments"
 
 
-dashboard.Mydashboard.register(BillingCycles)
+dashboard.Mydashboard.register(Payments)
