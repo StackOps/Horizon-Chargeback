@@ -1,1 +1,1 @@
-from chargeback_dashboard.api import rest
+from openstack_dashboard.dashboards.chargeback_dashboard.api import rest

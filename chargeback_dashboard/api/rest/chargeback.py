@@ -20,7 +20,7 @@ from django.views import generic
 from openstack_dashboard.api.rest import urls
 from openstack_dashboard.api.rest import utils as rest_utils
 from openstack_dashboard.api import base
-from chargeback_dashboard.api import chargeback
+from openstack_dashboard.dashboards.chargeback_dashboard.api import chargeback
 
 #CLIENT_KEYWORDS = {'marker', 'sort_dir', 'paginate'}
 

@@ -14,7 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 
 import horizon
 
-from chargeback_dashboard import dashboard
+from openstack_dashboard.dashboards.chargeback_dashboard import dashboard
 
 
 class BillingCycles(horizon.Panel):

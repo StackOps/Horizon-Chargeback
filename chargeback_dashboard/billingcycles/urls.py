@@ -13,7 +13,7 @@
 from django.conf.urls import patterns
 from django.conf.urls import url
 
-from chargeback_dashboard.billingcycles import views
+from openstack_dashboard.dashboards.chargeback_dashboard.billingcycles import views
 
 
 urlpatterns = patterns('',
