@@ -10,10 +10,10 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+
 from django.utils.translation import ugettext_lazy as _
 
 import horizon
-
 from openstack_dashboard.dashboards.chargeback_dashboard import dashboard
 
 
@@ -21,5 +21,13 @@ class Payments(horizon.Panel):
     name = _("Credit and Payments")
     slug = "payments"
 
+    def allowed(self, context):
+        request = context['request']
+        role_list = request.user.roles
+        resultado = True
+        for i in role_list:
+            if i['name'] == "admin":
+                resultado = False;
+        return resultado
 
 dashboard.Mydashboard.register(Payments)
