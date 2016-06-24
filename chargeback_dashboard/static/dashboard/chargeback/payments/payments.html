@@ -1,4 +1,4 @@
-<div id="chargeback-payments" class="container-fluid" ng-controller="horizon.dashboard.chargeback.PaymentsController as ctrl">
+<div id="chargeback-payments" class="container-fluid" ng-cloak>
   <div ng-show="ctrl.showMessage">
     <status-message message="ctrl.message" warn="ctrl.warn"></status-message>
   </div>
@@ -10,10 +10,8 @@
   </div>
 
 
-  <div class="row text-center" style="margin-top:50px;margin-bottom:10px;">
-    <img ng-src="/static/dashboard/images/transactions_32x32.png"></img>
-    <div class="funds-title"> Transactions </div>
-  </div>
+  <title-value message="ctrl.transaction_title"></title-value>
+
 
   <hz-dynamic-table config="ctrl.config" items="ctrl.history">
   </hz-dynamic-table>

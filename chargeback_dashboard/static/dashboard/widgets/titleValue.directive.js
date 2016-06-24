@@ -13,14 +13,25 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
-(function() {
+(function(){
   'use strict';
 
   angular
-    .module('horizon.dashboard.chargeback', [
-      'ngRoute',
-      'horizon.dashboard.chargeback.billingcycles',
-      'horizon.dashboard.chargeback.payments'
-    ]);
+  .module('horizon.dashboard.chargeback.billingcycles')
+  .directive('titleValue', product);
+  function product () {
+    return {
+      restrict: 'E',
+      controllerAs : 'ctrl',
+      bindToController : true,
+      controller : ProductController,
+      scope : {
+        message : "=message"
+      },
+      templateUrl : '/static/dashboard/widgets/titleValue.directive.html'
+    };
+  }
+  ProductController.$inject = [];
+  function ProductController () {}
+
 })();

@@ -17,50 +17,51 @@
   'use strict';
   angular
   .module('horizon.dashboard.chargeback.payments')
-  .controller('horizon.dashboard.chargeback.PaymentsController', PaymentsController);
 
-  PaymentsController.$inject = ['horizon.app.core.openstack-service-api.chargeback'];
+  .controller('horizon.dashboard.chargeback.payments.PaymentsController', PaymentsController);
 
-  function PaymentsController (chargebackAPI){
+  PaymentsController.$inject = [
+    'horizon.app.core.openstack-service-api.chargeback',
+    'statusValor',
+    'currentAccount'];
+
+  function PaymentsController (chargebackAPI, statusValor, currentAccount){
     var ctrl = this;
     var account = {};
     ctrl.history = [];
     ctrl.config = {};
     ctrl.fakeTableData = [];
-    ctrl.hasCredit = 'false';
+    ctrl.hasCredit = false;
     ctrl.balance = 0;
     ctrl.showMessage = false;
     ctrl.warn = false;
     ctrl.message = "";
     ctrl.bag = {};
+    // ctrl.transaction_title = "";
+
 
     loadData();
     function loadData(){
-      chargebackAPI.getStatus()
-      .then(function(data){
-        ctrl.bag = data.data.bag;
-        create_table(data.data);
-        chargebackAPI.getCurrentAccount()
-        .then(function(data){
-          account = data.data.account;
-          ctrl.hasCredit = account.allowCredit;
-          ctrl.balance = account.balance;
-          ctrl.status = account.status;
-          if(ctrl.status === "CREATED"){
-            ctrl.showMessage = true;
-            ctrl.message = "pepppp";
-          }
-          else if (ctrl.status === "SUSPENDED"){
-            ctrl.showMessage = true;
-            ctrl.warn = true;
-            ctrl.message = "pepppp";
-          }
-          ctrl.remaining_balance = Number(account.balance) - Number(ctrl.bag.usage);
-          ctrl.consumption = Number(ctrl.bag.usage);
-          ctrl.currency_name = account.currency.name;
-        });
-      });
-
+        ctrl.bag = statusValor.data.bag;
+        create_table(statusValor.data);
+        account = currentAccount.data.account;
+        ctrl.hasCredit = account.allowCredit;
+        ctrl.balance = account.balance;
+        ctrl.status = account.status;
+        if(ctrl.status === "CREATED"){
+          ctrl.showMessage = true;
+          ctrl.message = "pepppp";
+        }
+        else if (ctrl.status === "SUSPENDED"){
+          ctrl.showMessage = true;
+          ctrl.warn = true;
+          ctrl.message = "pepppp";
+        }
+        ctrl.remaining_balance = Number(account.balance) - Number(ctrl.bag.usage);
+        ctrl.consumption = Number(ctrl.bag.usage);
+        ctrl.currency_name = account.currency.name;
+        ctrl.transaction_title = "Transactions";
+        // $("#title_aux").show();
     }
     /**
     @param {String} currency
@@ -94,6 +95,7 @@
     function create_table(data){
       var bag = data.bag;
       ctrl.history = bag.history;
+
       var currency_name = bag.currency.name;
       var balance = 0;
       var time = 0;
@@ -110,7 +112,12 @@
           balance = balance + Number(h.amount);
         }
       });
+
       ctrl.config = create_table_config(currency_name);
+
     }
   }
+
+
+
 })();

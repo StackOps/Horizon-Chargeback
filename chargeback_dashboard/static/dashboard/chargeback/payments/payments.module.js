@@ -16,5 +16,38 @@
 (function() {
   'use strict';
   angular
-    .module('horizon.dashboard.chargeback.payments', []);
+    .module('horizon.dashboard.chargeback.payments', [])
+    .config(config);
+
+  config.$inject = [
+    '$provide',
+    '$windowProvider',
+    '$routeProvider',
+    '$locationProvider',
+   ];
+
+  function config($provide, $windowProvider, $routeProvider, $locationProvider) {
+
+    var path = $windowProvider.$get().STATIC_URL + 'dashboard/chargeback/';
+    var href = $windowProvider.$get().WEBROOT + 'chargeback/';
+
+    $provide.constant('horizon.dashboard.chargeback.basePath', path);
+
+    $routeProvider
+    .when(href + 'payments/', {
+      templateUrl: path + 'payments/payments.html',
+      controller: 'horizon.dashboard.chargeback.payments.PaymentsController',
+      controllerAs : 'ctrl',
+      resolve : {
+        statusValor : ['horizon.app.core.openstack-service-api.chargeback',
+        function(chargebackAPI){
+          return chargebackAPI.getStatus();
+        }],
+        currentAccount : ['horizon.app.core.openstack-service-api.chargeback',
+        function(chargebackAPI){
+          return chargebackAPI.getCurrentAccount();
+        }]
+      }
+    });
+  }
 })();

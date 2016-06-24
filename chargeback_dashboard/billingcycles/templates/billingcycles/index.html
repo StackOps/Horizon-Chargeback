@@ -2,10 +2,10 @@
 {% load i18n %}
 {% block title %}{% trans "BillingCycles" %}{% endblock %}
 
-{{ STATIC_URL }}
+{% block ng_route_base %}
+  <base href="{{ WEBROOT }}">
+{% endblock %}
 
 {% block main %}
-  <ng-include
-    src="'{{ STATIC_URL }}dashboard/chargeback/billingcycles/billingcycles.html'">
-  </ng-include>
+  <div ng-view></div>
 {% endblock %}
