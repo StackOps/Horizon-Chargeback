@@ -17,7 +17,7 @@
   'use strict';
 
   angular
-  .module('horizon.dashboard.chargeback.billingcycles')
+  .module('horizon.dashboard.chargeback')
   .directive('project', project);
 
   function project () {
