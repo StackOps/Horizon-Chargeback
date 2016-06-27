@@ -33,6 +33,7 @@
     ctrl.warn = false;
     ctrl.message = "";
     ctrl.bag = {};
+    ctrl.show_information = false;
 
     loadData();
     function loadData(){
@@ -58,6 +59,7 @@
           ctrl.remaining_balance = Number(account.balance) - Number(ctrl.bag.usage);
           ctrl.consumption = Number(ctrl.bag.usage);
           ctrl.currency_name = account.currency.name;
+          ctrl.show_information = true;
         });
       });
 
