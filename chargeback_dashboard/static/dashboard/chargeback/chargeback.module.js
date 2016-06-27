@@ -19,16 +19,8 @@
 
   angular
     .module('horizon.dashboard.chargeback', [
+      'ngRoute',
       'horizon.dashboard.chargeback.billingcycles',
       'horizon.dashboard.chargeback.payments'
-    ])
-    .config(config);
-
-  config.$inject = ['$provide', '$windowProvider'];
-
-  function config($provide, $windowProvider) {
-    var path = $windowProvider.$get().STATIC_URL + 'dashboard/chargeback/';
-    $provide.constant('horizon.dashboard.chargeback.basePath', path);
-  }
-
+    ]);
 })();

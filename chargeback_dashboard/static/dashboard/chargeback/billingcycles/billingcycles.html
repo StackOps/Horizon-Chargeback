@@ -1,5 +1,10 @@
 <div class="container-fluid" ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
+  <div ng-if="!ctrl.show_information">
+    <img width="24" height="24"
+    ng-src="/static/dashboard/images/spinner.gif"/> <span>Loading...</span>
+  </div>
 
+  <div ng-if="ctrl.show_information">
   <div class="row">
     <div ng-if="!ctrl.role_admin" class="account-header col-md-8 col-sm-12">
       Account: {$ ctrl.account.name $}
@@ -28,9 +33,15 @@
   <div class="row">
     <div class="col-sm-12 col-md-4 right-border-only">
 
-      <div ng-if="!ctrl.cycles.length" class="empty-text">
-        1. Select an account to see it on details...
-      </div>
+      <div ng-if="!ctrl.cycles.length" >
+          <p class="empty-text">1. Select an account to see it on details...</p>
+          <div ng-if="ctrl.has_select_cycles">
+            <img width="24" height="24"
+            ng-src="/static/dashboard/images/spinner.gif"/> <span>Loading...</span>
+          </div>
+        </div>
+
+
       <div ng-if="ctrl.cycles.length"
       ng-class="{'selected': ctrl.cycle_selected==r}"
       ng-repeat="r in ctrl.cycles" ng-click="ctrl.loadProject(r)" >
@@ -42,9 +53,16 @@
 
     <div class="col-sm-12 col-md-4 right-border-only" >
 
-      <div ng-if="!ctrl.projects.length" class="empty-text">
-        2. Then select a cycle...
-      </div>
+      <div ng-if="!ctrl.projects.length">
+        <p class="empty-text">
+          2. Then select a cycle...</p>
+
+          <div ng-if="ctrl.has_select_projects">
+            <img width="24" height="24"
+            ng-src="/static/dashboard/images/spinner.gif"/> <span>Loading...</span>
+          </div>
+
+        </div>
 
       <div ng-if="ctrl.projects.length"
       ng-class="{'selected': ctrl.project_selected==p}"
@@ -57,10 +75,14 @@
 
     <div class="col-sm-12 col-md-4 right-border-only" >
 
-      <div ng-if="!ctrl.products.length" class="empty-text"
-      >
-        3. Finally, select a project.
+      <div ng-if="!ctrl.products.length">
+        <p class="empty-text">3. Finally, select a project.</p>
+        <div ng-if="ctrl.has_select_products">
+          <img width="24" height="24"
+          ng-src="/static/dashboard/images/spinner.gif"/> <span>Loading...</span>
+        </div>
       </div>
+
       <div ng-if="ctrl.products.length"
       ng-repeat="product in ctrl.products">
         <product product="product" currency=ctrl.currency hidezerovalue=ctrl.hide_zero_value></product>
@@ -69,4 +91,6 @@
 
     </div>
   </div>
+
+</div>
 </div>

@@ -46,6 +46,11 @@
     ctrl.project_selected = null;
     ctrl.projects = [];
     ctrl.role_admin = false;
+    ctrl.show_information = false;
+
+    ctrl.has_select_cycles = false;
+    ctrl.has_select_projects = false;
+    ctrl.has_select_products = false;
 
     getRoles();
 
@@ -61,13 +66,14 @@
           ctrl.loadAccounts();
         }
         else{
+          ctrl.has_select_cycles = true;
           ctrl.loadCurrentAccount();
         }
       });
     }
 
     function loadAccount(account_id){
-      WaitSpinnerService.showModalSpinner('Loading');
+      //WaitSpinnerService.showModalSpinner('Loading');
       ctrl.loadCycles(account_id);
     }
 
@@ -75,24 +81,28 @@
       chargebackAPI.getAccounts()
       .then(function(data){
         ctrl.accounts = data.data.accounts;
+        ctrl.show_information = true;
       });
     }
 
     function loadCycles(account_id){
+      ctrl.has_select_cycles = true;
       ctrl.cycles = [];
       ctrl.projects = [];
       ctrl.products = [];
       chargebackAPI.getCyclesAccount(account_id)
       .then(function(cycles){
+        ctrl.show_information = true;
         ctrl.cycles = cycles.data;
-        WaitSpinnerService.hideModalSpinner();
+        ctrl.has_select_cycles = false;
       });
     }
 
     function loadCurrentAccount(){
-      WaitSpinnerService.showModalSpinner('Loading');
+      //WaitSpinnerService.showModalSpinner('Loading');
       chargebackAPI.getCurrentAccount()
       .then(function(data){
+
         if(!data.data.account){
           toastService.add('error', data.data.message);
           WaitSpinnerService.hideModalSpinner();
@@ -107,11 +117,11 @@
 
     function loadProduct(project){
       ctrl.project_selected = project;
-      WaitSpinnerService.showModalSpinner('Loading');
+      ctrl.has_select_products = true;
       chargebackAPI.getProductsProject(project.id)
       .then(function(data){
         ctrl.products = data.data;
-        WaitSpinnerService.hideModalSpinner();
+        ctrl.has_select_products = false;
       });
     }
 
@@ -119,10 +129,10 @@
       ctrl.projects = [];
       ctrl.products = [];
       ctrl.cycle_selected = cycle;
-      WaitSpinnerService.showModalSpinner('Loading');
+      ctrl.has_select_projects = true;
       chargebackAPI.getProjectsCycle(cycle.id).then(function(data){
         ctrl.projects = data.data;
-        WaitSpinnerService.hideModalSpinner();
+        ctrl.has_select_projects = false;
       });
     }
   }
