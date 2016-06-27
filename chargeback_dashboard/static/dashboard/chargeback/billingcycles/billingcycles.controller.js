@@ -18,7 +18,7 @@
 
   angular
     .module('horizon.dashboard.chargeback.billingcycles')
-    .controller('horizon.dashboard.chargeback.myPluginController',
+    .controller('horizon.dashboard.chargeback.BillingCyclesController',
       BillingCyclesController)
     ;
 
@@ -26,9 +26,10 @@
   'horizon.framework.widgets.modal-wait-spinner.service',
   'horizon.framework.widgets.toast.service',
   'horizon.app.core.openstack-service-api.chargeback',
-  'horizon.app.core.openstack-service-api.roles'];
+  'horizon.app.core.openstack-service-api.roles',
+'roles'];
 
-  function BillingCyclesController($http, WaitSpinnerService, toastService, chargebackAPI, rolesAPI) {
+  function BillingCyclesController($http, WaitSpinnerService, toastService, chargebackAPI, rolesAPI, roles) {
     var ctrl = this;
     ctrl.account = {};
     ctrl.accounts =[];
@@ -36,8 +37,6 @@
     ctrl.cycles = [];
     ctrl.hide_zero_value = true;
     ctrl.items = {};
-    ctrl.loadAccount = loadAccount;
-    ctrl.loadAccounts = loadAccounts;
     ctrl.loadCycles = loadCycles;
     ctrl.loadCurrentAccount = loadCurrentAccount;
     ctrl.loadProject = loadProject;
@@ -47,71 +46,56 @@
     ctrl.projects = [];
     ctrl.role_admin = false;
 
+    ctrl.has_select_cycles = false;
+    ctrl.has_select_projects = false;
+    ctrl.has_select_products = false;
+
     getRoles();
 
     function getRoles(){
-      rolesAPI.getRoles().then(function(data){
-        var roles = {};
-        data.data.forEach(function(role){
-          roles[role.name] = true;
-        });
-        rolesAPI.updateRoles(roles);
-        if(rolesAPI.hasRole('admin')){
-          ctrl.role_admin = true;
-          ctrl.loadAccounts();
-        }
-        else{
-          ctrl.loadCurrentAccount();
-        }
-      });
-    }
-
-    function loadAccount(account_id){
-      WaitSpinnerService.showModalSpinner('Loading');
-      ctrl.loadCycles(account_id);
-    }
-
-    function loadAccounts(){
-      chargebackAPI.getAccounts()
-      .then(function(data){
-        ctrl.accounts = data.data.accounts;
-      });
+      if(rolesAPI.hasRole('admin')){
+        ctrl.role_admin = true;
+        ctrl.accounts = roles.data.accounts;
+      }
+      else{
+        ctrl.has_select_cycles = true;
+        ctrl.loadCurrentAccount();
+      }
     }
 
     function loadCycles(account_id){
+      ctrl.has_select_cycles = true;
       ctrl.cycles = [];
       ctrl.projects = [];
       ctrl.products = [];
       chargebackAPI.getCyclesAccount(account_id)
       .then(function(cycles){
         ctrl.cycles = cycles.data;
+        ctrl.has_select_cycles = false;
         WaitSpinnerService.hideModalSpinner();
       });
     }
 
     function loadCurrentAccount(){
-      WaitSpinnerService.showModalSpinner('Loading');
-      chargebackAPI.getCurrentAccount()
-      .then(function(data){
-        if(!data.data.account){
+        if(!roles.data.account){
           toastService.add('error', data.data.message);
           WaitSpinnerService.hideModalSpinner();
         }
         else{
-          ctrl.account = data.data.account;
+
+          ctrl.account = roles.data.account;
           ctrl.currency = ctrl.account.currency;
           ctrl.loadCycles(ctrl.account.id);
         }
-      });
     }
 
     function loadProduct(project){
       ctrl.project_selected = project;
-      WaitSpinnerService.showModalSpinner('Loading');
+      ctrl.has_select_products = true;
       chargebackAPI.getProductsProject(project.id)
       .then(function(data){
         ctrl.products = data.data;
-        WaitSpinnerService.hideModalSpinner();
+        ctrl.has_select_products = false;
       });
     }
 
@@ -119,10 +103,10 @@
       ctrl.projects = [];
       ctrl.products = [];
       ctrl.cycle_selected = cycle;
-      WaitSpinnerService.showModalSpinner('Loading');
+      ctrl.has_select_projects = true;
       chargebackAPI.getProjectsCycle(cycle.id).then(function(data){
         ctrl.projects = data.data;
-        WaitSpinnerService.hideModalSpinner();
+        ctrl.has_select_projects = false;
       });
     }
   }

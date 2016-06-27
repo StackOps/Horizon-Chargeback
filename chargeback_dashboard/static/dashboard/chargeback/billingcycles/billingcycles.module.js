@@ -35,6 +35,27 @@
     $routeProvider
     .when(href, {
       templateUrl: path + 'billingcycles/billingcycles.html',
+      controller: 'horizon.dashboard.chargeback.BillingCyclesController',
+      controllerAs : 'ctrl',
+      resolve : {
+        roles : ['horizon.app.core.openstack-service-api.roles',
+        'horizon.app.core.openstack-service-api.chargeback',
+        function(rolesAPI, chargebackAPI){
+          return rolesAPI.getRoles().then(function(data){
+            var roles = {};
+            data.data.forEach(function(role){
+              roles[role.name] = true;
+            });
+            rolesAPI.updateRoles(roles);
+            if(rolesAPI.hasRole('admin')){
+              return chargebackAPI.getAccounts();
+            }
+            else{
+              return chargebackAPI.getCurrentAccount();
+            }
+          });
+        }]
+      }
     });
   }
 })();

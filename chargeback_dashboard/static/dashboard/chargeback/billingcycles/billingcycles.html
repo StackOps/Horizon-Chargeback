@@ -1,71 +1,81 @@
-<div class="container-fluid" ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
-
+<div class="container-fluid">
   <div class="row">
+
     <div ng-if="!ctrl.role_admin" class="account-header col-md-8 col-sm-12">
       Account: {$ ctrl.account.name $}
     </div>
+
     <div ng-if="ctrl.role_admin" class="account-header col-md-8 col-sm-12">
-
       <label style="display:inline">Account:
-      <select class="select-accounts"
-       ng-options="account.name for account in ctrl.accounts| orderBy:'name' track by account.id"
-       ng-model="ctrl.account"
-       ng-change=ctrl.loadAccount(ctrl.account.id)>
-      <option value="" disabled selected></option>
+        <select class="select-accounts"
+        ng-options="account.name for account in ctrl.accounts| orderBy:'name' track by account.id"
+        ng-model="ctrl.account"
+        ng-change=ctrl.loadCycles(ctrl.account.id)>
+        <option value="" disabled selected></option>
       </select></label>
-
-
-
-
     </div>
+
     <div class="col-md-4 col-sm-12">
       <label> <input type="checkbox"
-       ng-model="ctrl.hide_zero_value">
-       Hide resources with zero value</label>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-12 col-md-4 right-border-only">
-
-      <div ng-if="!ctrl.cycles.length" class="empty-text">
-        1. Select an account to see it on details...
+        ng-model="ctrl.hide_zero_value">
+        Hide resources with zero value</label>
       </div>
-      <div ng-if="ctrl.cycles.length"
-      ng-class="{'selected': ctrl.cycle_selected==r}"
-      ng-repeat="r in ctrl.cycles" ng-click="ctrl.loadProject(r)" >
+    </div>
+
+    <div class="row-fluid">
+      <div  class="col-sm-12 col-md-4  right-border-only">
+        <div ng-if="!ctrl.cycles.length" >
+          <p class="empty-text">1. Select an account to see it on details...</p>
+          <div ng-if="ctrl.has_select_cycles">
+            <img width="24" height="24"
+            ng-src="/static/dashboard/images/spinner.gif"/> <span>Loading...</span>
+          </div>
+        </div>
+
+        <div ng-if="ctrl.cycles.length"
+        ng-class="{'selected': ctrl.cycle_selected==r}"
+        ng-repeat="r in ctrl.cycles" ng-click="ctrl.loadProject(r)" >
         <cycle cycle='r' currency=ctrl.currency ></cycle>
       </div>
 
     </div>
 
 
-    <div class="col-sm-12 col-md-4 right-border-only" >
+    <div class="col-sm-12 col-md-4  right-border-only" >
 
-      <div ng-if="!ctrl.projects.length" class="empty-text">
-        2. Then select a cycle...
-      </div>
+      <div ng-if="!ctrl.projects.length">
+        <p class="empty-text">
+          2. Then select a cycle...</p>
 
-      <div ng-if="ctrl.projects.length"
-      ng-class="{'selected': ctrl.project_selected==p}"
-      ng-repeat="p in ctrl.projects" ng-click="ctrl.loadProduct(p)">
+          <div ng-if="ctrl.has_select_projects">
+            <img width="24" height="24"
+            ng-src="/static/dashboard/images/spinner.gif"/> <span>Loading...</span>
+          </div>
+
+        </div>
+
+        <div ng-if="ctrl.projects.length"
+        ng-class="{'selected': ctrl.project_selected==p}"
+        ng-repeat="p in ctrl.projects" ng-click="ctrl.loadProduct(p)">
         <project project='p' currency=ctrl.currency></project>
       </div>
     </div>
 
 
 
-    <div class="col-sm-12 col-md-4 right-border-only" >
+    <div class="col-sm-12 col-md-4  right-border-only" >
 
-      <div ng-if="!ctrl.products.length" class="empty-text"
-      >
-        3. Finally, select a project.
+      <div ng-if="!ctrl.products.length">
+        <p class="empty-text">3. Finally, select a project.</p>
+        <div ng-if="ctrl.has_select_products">
+          <img width="24" height="24"
+          ng-src="/static/dashboard/images/spinner.gif"/> <span>Loading...</span>
+        </div>
       </div>
-      <div ng-if="ctrl.products.length"
-      ng-repeat="product in ctrl.products">
+
+      <div ng-if="ctrl.products.length" ng-repeat="product in ctrl.products">
         <product product="product" currency=ctrl.currency hidezerovalue=ctrl.hide_zero_value></product>
       </div>
-
 
     </div>
   </div>
