@@ -12,6 +12,14 @@ msgstr ""
 msgid " - End"
 msgstr "- Fin"
 
+msgid "Credit and Payments"
+msgstr "Crédito y pagos"
 
-msgid "Mama"
-msgstr "Lissete"
+msgid "Billing cycles"
+msgstr "Ciclos de facturación"
+
+msgid "Billing Cycles"
+msgstr "Ciclos de facturación"
+
+msgid "Billing and Payments"
+msgstr "Facturación y pagos"

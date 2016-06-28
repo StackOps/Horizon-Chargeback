@@ -12,10 +12,6 @@ msgstr ""
 msgid " - End"
 msgstr "- Fin"
 
-
-msgid "Mama"
-msgstr "Marcial"
-
 msgid "Account:"
 msgstr "Cuenta:"
 
@@ -59,14 +55,14 @@ msgid "Consumption"
 msgstr "Consumo"
 
 
-msgid " Cycle (Current, in process)"
-msgstr " Ciclo (Actual, en curso)"
+msgid "Cycle (Current, in process)"
+msgstr "Ciclo (Actual, en curso)"
 
-msgid " Cycle"
-msgstr " Ciclo"
+msgid "Cycle"
+msgstr "Ciclo"
 
-msgid " BaseFee"
-msgstr " Precio base"
+msgid "BaseFee"
+msgstr "Precio base"
 
 msgid "Discount"
 msgstr "Descuento"
@@ -74,8 +70,11 @@ msgstr "Descuento"
 msgid "Total:"
 msgstr "Total:"
 
-msgid " Project:"
-msgstr " Proyecto:"
+msgid "Project:"
+msgstr "Proyecto:"
+
+msgid "Product:"
+msgstr "Producto:"
 
 msgid "Date"
 msgstr "Fecha"
@@ -88,6 +87,3 @@ msgstr "Cantidad"
 
 msgid "Invoice"
 msgstr "Factura"
-
-msgid ""
-msgstr ""

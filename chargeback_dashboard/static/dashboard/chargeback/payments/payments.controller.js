@@ -81,7 +81,7 @@
           id: 'timestamp', title: date, sortDefault : true,
           template: "<span>{$ item.timestamp * 1000| date : 'yyyy-MM-dd' $}</span>"
         },{
-          id: 'description', title: 'Description'
+          id: 'description', title: description
         },{
           id: 'amount', title : amount,
           template: "<span class=\"text-danger\" ng-if=item.type==='OUT'> - {$ item.amount |currency : '" +currency_name + "' $}</span>"+
