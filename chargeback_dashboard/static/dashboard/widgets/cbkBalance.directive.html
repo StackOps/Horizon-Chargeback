@@ -1,15 +1,12 @@
 <div class="payments-box">
 
-  <div ng-if="ctrl.less_than_zero" id="balance-box" class="balance negative" data-qtip="' + tooltip + '">
+  <div id="balance-box" ng-class="{balance : true, negative : balanceCtrl.less_than_zero}" title="balanceCtrl.tooltip">
     <div class="payments-title">
-      Remaining Balance
+      <span translate>Remaining Balance</span>
     </div>
-    <div class="payments-amount"> {$ ctrl.amount | currency : ctrl.currency_name $}</div>
-  </div>
-
-  <div ng-if="!ctrl.less_than_zero" id="balance-box" class="balance" title="The remaining balance is the result of substraiting the monthly consumption from the balance.">
-    <div class="payments-title"> Remaining Balance </div>
-    <div class="payments-amount"> {$ ctrl.amount | currency : ctrl.currency_name $}</div>
+    <div class="payments-amount">
+      {$ balanceCtrl.amount | currency : balanceCtrl.currency_name $}
+    </div>
   </div>
 
 </div>

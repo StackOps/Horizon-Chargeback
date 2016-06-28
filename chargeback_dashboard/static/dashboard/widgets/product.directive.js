@@ -22,7 +22,7 @@
   function product () {
     return {
       restrict: 'E',
-      controllerAs : 'ctrl',
+      controllerAs : 'productCtrl',
       bindToController : true,
       controller : ProductController,
       scope : {

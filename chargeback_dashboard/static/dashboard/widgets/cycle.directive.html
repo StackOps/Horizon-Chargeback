@@ -1,17 +1,17 @@
 <div class="cycle-box">
   <div class="cycle-title">
     <img ng-src="/static/dashboard/images/cycle_16x16.png" />
-    <p ng-show="ctrl.cycle.current" class="title-text"> Cycle (Current, in process)</p>
-    <p ng-hide="ctrl.cycle.current" class="title-text"> Cycle</p>
+    <p ng-show="cycleCtrl.cycle.current" class="title-text" translate> Cycle (Current, in process)</p>
+    <p ng-hide="cycleCtrl.cycle.current" class="title-text" translate> Cycle</p>
   </div>
   <div class="box-el">
     <img ng-src="/static/dashboard/images/calendar_16x16.png" />
-    <p ng-show="ctrl.cycle.current" class="text">{$ ctrl.cycle.start*1000  | date : 'yyyy/MM/dd' $} - now</p>
-    <p ng-hide="ctrl.cycle.current" class="text">{$ ctrl.cycle.start*1000  | date : 'yyyy/MM/dd' $} - {$ ctrl.cycle.end * 1000 | date : 'yyyy/MM/dd' $}</p>
+    <p ng-show="cycleCtrl.cycle.current" class="text">{$ cycleCtrl.cycle.start*1000  | date : 'yyyy/MM/dd' $} - now</p>
+    <p ng-hide="cycleCtrl.cycle.current" class="text">{$ cycleCtrl.cycle.start*1000  | date : 'yyyy/MM/dd' $} - {$ cycleCtrl.cycle.end * 1000 | date : 'yyyy/MM/dd' $}</p>
   </div>
   <div class="clear-double"></div>
   <div class="clear"></div>
   <div class="box-el total">
-    <p class="key">Total:</p><p class="value">{$ ctrl.cycle.total |currency : ctrl.currency.name $}</p>
+    <p class="key">Total:</p><p class="value">{$ cycleCtrl.cycle.total |currency : cycleCtrl.currency.name $}</p>
   </div>
 </div>

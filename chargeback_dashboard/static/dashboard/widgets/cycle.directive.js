@@ -23,7 +23,7 @@
   function cycle () {
     return {
       restrict: 'E',
-      controllerAs : 'ctrl',
+      controllerAs : 'cycleCtrl',
       bindToController : true,
       controller : CycleController,
       scope : {

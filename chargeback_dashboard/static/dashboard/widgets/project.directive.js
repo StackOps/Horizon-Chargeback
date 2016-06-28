@@ -23,7 +23,7 @@
   function project () {
     return {
       restrict: 'E',
-      controllerAs : 'ctrl',
+      controllerAs : 'projectCtrl',
       bindToController : true,
       controller : ProjectController,
       scope : {

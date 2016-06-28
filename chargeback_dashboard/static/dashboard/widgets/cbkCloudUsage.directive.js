@@ -23,7 +23,7 @@
   function cbkCloudUsage () {
     return {
       restrict: 'E',
-      controllerAs : 'ctrl',
+      controllerAs : 'cloudUsageCtrl',
       bindToController : true,
       controller : CbkCloudUsageController,
       scope : {

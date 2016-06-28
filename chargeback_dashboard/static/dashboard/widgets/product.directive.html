@@ -1,25 +1,25 @@
 <div class="cycle-box">
   <div class="cycle-title">
     <img ng-src="/static/dashboard/images/product_16x16.png" />
-    <p class="title-text"> Product: {$ ctrl.product.productType.description $}</p>
+    <p class="title-text"> Product: {$ productCtrl.product.productType.description $}</p>
   </div>
 
-  <div ng-hide="ctrl.hidezerovalue && !ctrl.product.total">
-    <product-resource  ng-repeat="resource in ctrl.product.resources"
-    resource="resource" currency=ctrl.currency></product-resource>
+  <div ng-hide="productCtrl.hidezerovalue && !productCtrl.product.total">
+    <product-resource  ng-repeat="resource in productCtrl.product.resources"
+    resource="resource" currency=productCtrl.currency></product-resource>
   </div>
 
 
 
   <div class="clear"></div>
   <div class="box-el">
-    <p class="key long>"> BaseFee</p><p class="value">  {$ ctrl.product.baseFee | currency : ctrl.currency.name $} </p>
+    <p class="key long>" translate> BaseFee</p><p class="value">  {$ productCtrl.product.baseFee | currency : productCtrl.currency.name $} </p>
   </div>
   <div class="box-el">
-    <p class="key long>">Discount</p><p class="value"> {$ ctrl.product.discount  $}%</p>
+    <p class="key long>" translate>Discount</p><p class="value"> {$ productCtrl.product.discount  $}%</p>
   </div>
 
   <div class="box-el total">
-    <p class="key">Total:</p><p class="value"> {$ ctrl.product.total | currency : ctrl.currency.name $} </p>
+    <p class="key" translate>Total:</p><p class="value"> {$ productCtrl.product.total | currency : productCtrl.currency.name $} </p>
   </div>
 </div>

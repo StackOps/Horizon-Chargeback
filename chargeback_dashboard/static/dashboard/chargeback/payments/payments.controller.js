@@ -49,12 +49,12 @@
           ctrl.status = account.status;
           if(ctrl.status === "CREATED"){
             ctrl.showMessage = true;
-            ctrl.message = "pepppp";
+            ctrl.message = gettext('Make your first payment in order to get your account activated.');
           }
           else if (ctrl.status === "SUSPENDED"){
             ctrl.showMessage = true;
             ctrl.warn = true;
-            ctrl.message = "pepppp";
+            ctrl.message = gettext('Your account has been temporarily suspended. Please, contact the support team.');
           }
           ctrl.remaining_balance = Number(account.balance) - Number(ctrl.bag.usage);
           ctrl.consumption = Number(ctrl.bag.usage);
@@ -68,24 +68,29 @@
     @param {String} currency
     **/
     function create_table_config(currency_name){
+      var date = gettext('Date');
+      var description = gettext('Description');
+      var amount = gettext('Amount');
+      var balance = gettext('Balance');
+      var invoice = gettext('Invoice');
       return {
         selectAll: false,
         expand : false,
         trackId : 'id',
         columns : [{
-          id: 'timestamp', title: 'Date', sortDefault : true,
+          id: 'timestamp', title: date, sortDefault : true,
           template: "<span>{$ item.timestamp * 1000| date : 'yyyy-MM-dd' $}</span>"
         },{
           id: 'description', title: 'Description'
         },{
-          id: 'amount', title : 'Amount',
+          id: 'amount', title : amount,
           template: "<span class=\"text-danger\" ng-if=item.type==='OUT'> - {$ item.amount |currency : '" +currency_name + "' $}</span>"+
           "<span class=\"text-success\" ng-if=item.type==='IN'>{$ item.amount |currency : '" +currency_name + "' $}</span>"
         },  {
-          id: 'balance', title : 'Balance',
+          id: 'balance', title : balance,
           template: "<span>{$ item.balance | currency :  '"+ currency_name+ "'  $}</span>"
         },{
-          id: 'invoice', title : 'Invoice',
+          id: 'invoice', title : invoice,
           template: '<a target="_blank" ng-href="{$ item.invoice $}">{$ item.invoice $}</a>'
         }]
       };

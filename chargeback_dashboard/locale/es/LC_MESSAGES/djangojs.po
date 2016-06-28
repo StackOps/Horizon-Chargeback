@@ -15,3 +15,79 @@ msgstr "- Fin"
 
 msgid "Mama"
 msgstr "Marcial"
+
+msgid "Account:"
+msgstr "Cuenta:"
+
+msgid "Hide resources with zero value"
+msgstr "Esconder recursos con valores nulos"
+
+
+msgid "1. Select an account to see it on details..."
+msgstr "1. Seleccione una cuenta para verla en detalle..."
+
+msgid "Loading..."
+msgstr "Cargando..."
+
+msgid "2. Then select a cycle..."
+msgstr "2. A continuación selecciones un ciclo..."
+
+
+msgid "Transactions"
+msgstr "Transacciones"
+
+msgid "3. Finally, select a project."
+msgstr "3. Finalmente, seleccione un proyecto."
+
+
+msgid "Remaining Balance"
+msgstr "Balance restante"
+
+msgid "Make your first payment in order to get your account activated."
+msgstr "Para activar su cuenta, haga su primer ingreso."
+
+
+msgid "Your account has been temporarily suspended. Please, contact the support team."
+msgstr "Su cuenta ha sido temporalmente suspendida. Por favor, contacte con el equipo de soporte."
+
+
+msgid "The remaining balance is the result of substraiting the monthly consumption from the balance."
+msgstr "El saldo restante es el resultado de restar el consumo del saldo."
+
+
+msgid "Consumption"
+msgstr "Consumo"
+
+
+msgid " Cycle (Current, in process)"
+msgstr " Ciclo (Actual, en curso)"
+
+msgid " Cycle"
+msgstr " Ciclo"
+
+msgid " BaseFee"
+msgstr " Precio base"
+
+msgid "Discount"
+msgstr "Descuento"
+
+msgid "Total:"
+msgstr "Total:"
+
+msgid " Project:"
+msgstr " Proyecto:"
+
+msgid "Date"
+msgstr "Fecha"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Amount"
+msgstr "Cantidad"
+
+msgid "Invoice"
+msgstr "Factura"
+
+msgid ""
+msgstr ""

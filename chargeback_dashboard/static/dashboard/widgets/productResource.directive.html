@@ -1,11 +1,11 @@
 <div class="box-el cycle-box-el-icon cycle-box-el-threelined">
-  <p class="key long">{$ ctrl.resource.resourceType.description $}</p>
+  <p class="key long">{$ productResourceCtrl.resource.resourceType.description $}</p>
   <img class="cycle-box-icon" src="/static/dashboard/images/resource_16x16.png"></img>
   <br>
-  <p ng-show="ctrl.resource.freeUnitsPerCycle" class="key long" style="margin-left:20px">Units: {$ ctrl.resource.ammount $} - Free units: {$ ctrl.resource.freeUnitsPerCycle $}</p>
-  <p ng-hide="ctrl.resource.freeUnitsPerCycle" class="key long" style="margin-left:20px">Units: {$ ctrl.resource.ammount $}</p>
+  <p ng-show="productResourceCtrl.resource.freeUnitsPerCycle" class="key long" style="margin-left:20px">Units: {$ productResourceCtrl.resource.ammount $} - Free units: {$ productResourceCtrl.resource.freeUnitsPerCycle $}</p>
+  <p ng-hide="productResourceCtrl.resource.freeUnitsPerCycle" class="key long" style="margin-left:20px">Units: {$ productResourceCtrl.resource.ammount $}</p>
   <br>
-  <p class="key long description"> {$ ctrl.resource.unitFee  | currency : ctrl.currency.name $} per unit + {$ ctrl.resource.fixedFee | currency : ctrl.currency.name $} fee </p>
-  <p class="value"> {$ ctrl.resource.accumulatedFee | currency : ctrl.currency.name $}</p>
+  <p class="key long description"> {$ productResourceCtrl.resource.unitFee  | currency : productResourceCtrl.currency.name $} per unit + {$ productResourceCtrl.resource.fixedFee | currency : productResourceCtrl.currency.name $} fee </p>
+  <p class="value"> {$ productResourceCtrl.resource.accumulatedFee | currency : productResourceCtrl.currency.name $}</p>
 </div>
 <div class="clear"></div>

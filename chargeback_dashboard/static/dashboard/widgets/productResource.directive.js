@@ -23,7 +23,7 @@
   function productResource () {
     return {
       restrict: 'E',
-      controllerAs : 'ctrl',
+      controllerAs : 'productResourceCtrl',
       bindToController : true,
       controller : ProductResourceController,
       scope : {

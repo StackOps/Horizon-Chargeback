@@ -7,11 +7,11 @@
   <div ng-if="ctrl.show_information">
   <div class="row">
     <div ng-if="!ctrl.role_admin" class="account-header col-md-8 col-sm-12">
-      Account: {$ ctrl.account.name $}
+      <span translate>Account:</span> {$ ctrl.account.name $}
     </div>
     <div ng-if="ctrl.role_admin" class="account-header col-md-8 col-sm-12">
 
-      <label style="display:inline">Account:
+      <label style="display:inline"><span translate>Account:</span>
       <select class="select-accounts"
        ng-options="account.name for account in ctrl.accounts| orderBy:'name' track by account.id"
        ng-model="ctrl.account"
@@ -26,7 +26,7 @@
     <div class="col-md-4 col-sm-12">
       <label> <input type="checkbox"
        ng-model="ctrl.hide_zero_value">
-       Hide resources with zero value</label>
+       <span translate>Hide resources with zero value</span></label>
     </div>
   </div>
 
@@ -34,10 +34,10 @@
     <div class="col-sm-12 col-md-4 right-border-only">
 
       <div ng-if="!ctrl.cycles.length" >
-          <p class="empty-text">1. Select an account to see it on details...</p>
+          <p class="empty-text" translate>1. Select an account to see it on details...</p>
           <div ng-if="ctrl.has_select_cycles">
             <img width="24" height="24"
-            ng-src="/static/dashboard/images/spinner.gif"/> <span>Loading...</span>
+            ng-src="/static/dashboard/images/spinner.gif"/> <span translate>Loading...</span>
           </div>
         </div>
 
@@ -54,12 +54,11 @@
     <div class="col-sm-12 col-md-4 right-border-only" >
 
       <div ng-if="!ctrl.projects.length">
-        <p class="empty-text">
-          2. Then select a cycle...</p>
+        <p class="empty-text" translate>2. Then select a cycle...</p>
 
           <div ng-if="ctrl.has_select_projects">
             <img width="24" height="24"
-            ng-src="/static/dashboard/images/spinner.gif"/> <span>Loading...</span>
+            ng-src="/static/dashboard/images/spinner.gif"/> <span translate>Loading...</span>
           </div>
 
         </div>
@@ -76,10 +75,10 @@
     <div class="col-sm-12 col-md-4 right-border-only" >
 
       <div ng-if="!ctrl.products.length">
-        <p class="empty-text">3. Finally, select a project.</p>
+        <p class="empty-text" translate>3. Finally, select a project.</p>
         <div ng-if="ctrl.has_select_products">
           <img width="24" height="24"
-          ng-src="/static/dashboard/images/spinner.gif"/> <span>Loading...</span>
+          ng-src="/static/dashboard/images/spinner.gif"/> <span translate>Loading...</span>
         </div>
       </div>
 

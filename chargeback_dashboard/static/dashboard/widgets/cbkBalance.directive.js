@@ -23,9 +23,10 @@
   function cbkBalance () {
     return {
       restrict: 'E',
-      controllerAs : 'ctrl',
+      controllerAs : 'balanceCtrl',
       bindToController : true,
       controller : CbkBalanceController,
+      link : link,
       scope : {
         amount : '=amount',
         currency_name : '=currencyname'
@@ -36,5 +37,6 @@
   CbkBalanceController.$inject = [];
   function CbkBalanceController () {
     this.less_than_zero = this.amount < 0;
+    this.tooltip = gettext("The remaining balance is the result of substraiting the monthly consumption from the balance.");
   }
 })();

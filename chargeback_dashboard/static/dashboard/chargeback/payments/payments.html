@@ -2,27 +2,27 @@
 
   <div ng-if="!ctrl.show_information">
     <img width="24" height="24"
-    ng-src="/static/dashboard/images/spinner.gif"/> <span>Loading...</span>
+    ng-src="/static/dashboard/images/spinner.gif"/> <span translate>Loading...</span>
   </div>
 
   <div ng-if="ctrl.show_information">
-  <div ng-show="ctrl.showMessage">
-    <status-message message="ctrl.message" warn="ctrl.warn"></status-message>
+    <div ng-show="ctrl.showMessage">
+      <status-message message="ctrl.message" warn="ctrl.warn"></status-message>
+    </div>
+
+
+    <div class="row">
+      <cbk-balance class="col-sm-6" currencyname="ctrl.currency_name" amount="ctrl.remaining_balance"></cbk-balance>
+      <cbk-cloud-usage class="col-sm-6" currencyname="ctrl.currency_name" amount="ctrl.consumption"></cbk-cloud-usage >
+    </div>
+
+
+    <div class="row text-center" style="margin-top:50px;margin-bottom:10px;">
+      <img ng-src="/static/dashboard/images/transactions_32x32.png"></img>
+      <div class="funds-title" translate>Transactions</div>
+    </div>
+
+    <hz-dynamic-table config="ctrl.config" items="ctrl.history">
+    </hz-dynamic-table>
   </div>
-
-
-  <div class="row">
-    <cbk-balance class="col-sm-6" currencyname="ctrl.currency_name" amount="ctrl.remaining_balance"></cbk-balance>
-    <cbk-cloud-usage class="col-sm-6" currencyname="ctrl.currency_name" amount="ctrl.consumption"></cbk-cloud-usage >
-  </div>
-
-
-  <div class="row text-center" style="margin-top:50px;margin-bottom:10px;">
-    <img ng-src="/static/dashboard/images/transactions_32x32.png"></img>
-    <div class="funds-title"> Transactions </div>
-  </div>
-
-  <hz-dynamic-table config="ctrl.config" items="ctrl.history">
-  </hz-dynamic-table>
-</div>
 </div>
