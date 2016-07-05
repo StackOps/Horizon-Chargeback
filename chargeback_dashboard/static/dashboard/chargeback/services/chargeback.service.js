@@ -17,7 +17,7 @@
   'use strict';
 
   angular
-    .module('horizon.app.core.openstack-service-api')
+    .module('horizon.dashboard.chargeback')
     .factory('horizon.app.core.openstack-service-api.chargeback', chargebackAPI);
 
   chargebackAPI.$inject = [

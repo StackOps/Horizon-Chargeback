@@ -40,7 +40,9 @@
 
       $routeProvider
       .when(href + 'payments/', {
-        templateUrl: path + 'payments/payments.html'
+        templateUrl: path + 'payments/payments.html',
+        controller : 'horizon.dashboard.chargeback.PaymentsController',
+        controllerAs : 'ctrl'
       });
     }
 })();
