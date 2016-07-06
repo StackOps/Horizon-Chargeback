@@ -16,25 +16,5 @@
 (function() {
   'use strict';
   angular
-    .module('horizon.dashboard.chargeback.billingcycles', [])
-    .config(config);
-
-  config.$inject = [
-    '$provide',
-    '$windowProvider',
-    '$routeProvider',
-    '$locationProvider',
-   ];
-
-  function config($provide, $windowProvider, $routeProvider, $locationProvider) {
-
-    var path = $windowProvider.$get().STATIC_URL + 'dashboard/chargeback/';
-    var href = $windowProvider.$get().WEBROOT + 'chargeback/';
-    $provide.constant('horizon.dashboard.chargeback.basePath', path);
-
-    $routeProvider
-    .when(href, {
-      templateUrl: path + 'billingcycles/billingcycles.html'
-    });
-  }
+    .module('horizon.dashboard.chargeback.billingcycles', []);
 })();

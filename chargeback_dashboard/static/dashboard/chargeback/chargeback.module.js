@@ -43,6 +43,11 @@
         templateUrl: path + 'payments/payments.html',
         controller : 'horizon.dashboard.chargeback.PaymentsController',
         controllerAs : 'ctrl'
+      })
+      .when(href, {
+        templateUrl: path + 'billingcycles/billingcycles.html',
+        controller : 'horizon.dashboard.chargeback.myPluginController',
+        controllerAs : 'ctrl'
       });
     }
 })();
