@@ -2,7 +2,7 @@ describe('horizon .payments', function() {
   beforeEach(module('horizon.dashboard.chargeback.payments'));
 
   var $controller, controller, chargebackAPI, history, currentAccount, q, rootScope,
-  created_account, suspended_account, status, scope, table;
+  created_account, suspended_account, status, scope, table, loadDataInjection;
 
   beforeEach(function(){
     currentAccount = {
@@ -177,6 +177,20 @@ describe('horizon .payments', function() {
     });
   }));
 
+  beforeEach(function(){
+    loadDataInjection = function(account){
+      var statusdeferred = q.defer();
+      var accountdeferred = q.defer();
+      spyOn(chargebackAPI, 'getStatus').and.returnValue(statusdeferred.promise);
+      spyOn(chargebackAPI, 'getCurrentAccount').and.returnValue(accountdeferred.promise);
+
+      controller.loadData();
+      statusdeferred.resolve({data : status});
+      accountdeferred.resolve({data : account});
+      rootScope.$digest();
+    };
+  });
+
   describe("Initial configuration", function(){
     it("Initial configuration", function(){
       expect(controller.history).toEqual([]);
@@ -188,33 +202,6 @@ describe('horizon .payments', function() {
       expect(controller.show_information).toBe(false);
     });
   });
-
-
-  // describe("_create_table", function(){
-  //
-  //   describe("_generateBalanceValues", function(){
-  //     it("has to update controller.history with the value of the status call", function(){
-  //       controller._create_table(status);
-  //       expect(controller.history).toEqual(status.bag.history);
-  //     });
-  //     it("has to update the balance of each item", function(){
-  //       controller._create_table(status);
-  //       controller.history.forEach(function(h){
-  //         expect(Number(h.balance.toFixed(2))).toEqual(h.balance_aux);
-  //       });
-  //     });
-  //   });
-  //
-  //   describe("_create_table_config", function(){
-  //     it("has to update the ctrl.config with the field with the table to show", function(){
-  //       controller._create_table(status);
-  //       expect(controller.config).toEqual(table);
-  //     });
-  //   });
-  //
-  // });
-
-
 
   describe('load Data', function(){
 
@@ -236,64 +223,49 @@ describe('horizon .payments', function() {
       expect(controller.show_information).toBe(true);
     });
 
-
-    it('it has messages to show when the status of the account is SUSPENDED', function(){
-
-      var statusdeferred = q.defer();
-      var accountdeferred = q.defer();
-      spyOn(chargebackAPI, 'getStatus').and.returnValue(statusdeferred.promise);
-      spyOn(chargebackAPI, 'getCurrentAccount').and.returnValue(accountdeferred.promise);
-
-      controller.loadData();
-      statusdeferred.resolve({data : status});
-      accountdeferred.resolve({data : suspended_account});
-      rootScope.$digest();
-
-      expect(chargebackAPI.getStatus).toHaveBeenCalled();
-      expect(chargebackAPI.getCurrentAccount).toHaveBeenCalled();
-      expect(controller.showMessage).toBe(true);
-      expect(controller.warn).toBe(true);
-      expect(controller.message).toEqual('Your account has been temporarily suspended. Please, contact the support team.');
-
+    describe("when account status is SUSPENDED", function(){
+      it("should set showMessage to true", function(){
+        loadDataInjection(suspended_account);
+        expect(controller.showMessage).toBe(true);
+      });
+      it("should set warn to true", function(){
+        loadDataInjection(suspended_account);
+        expect(controller.warn).toBe(true);
+      });
+      it("should update message", function(){
+        loadDataInjection(suspended_account);
+        expect(controller.message).toEqual('Your account has been temporarily suspended. Please, contact the support team.');
+      });
     });
 
-    it('it has messages to show when the status of the account is CREATED', function(){
-
-      var statusdeferred = q.defer();
-      var accountdeferred = q.defer();
-      spyOn(chargebackAPI, 'getStatus').and.returnValue(statusdeferred.promise);
-      spyOn(chargebackAPI, 'getCurrentAccount').and.returnValue(accountdeferred.promise);
-
-      controller.loadData();
-      statusdeferred.resolve({data : status});
-      accountdeferred.resolve({data : created_account});
-      rootScope.$digest();
-
-      expect(chargebackAPI.getStatus).toHaveBeenCalled();
-      expect(chargebackAPI.getCurrentAccount).toHaveBeenCalled();
-      expect(controller.warn).toBe(false);
-      expect(controller.showMessage).toBe(true);
-      expect(controller.message).toEqual('Make your first payment in order to get your account activated.');
+    describe("when account status is created", function(){
+      it("should set showMessage to true", function(){
+        loadDataInjection(created_account);
+        expect(controller.showMessage).toBe(true);
+      });
+      it("should set warn to true", function(){
+        loadDataInjection(created_account);
+        expect(controller.warn).toBe(false);
+      });
+      it("should update message", function(){
+        loadDataInjection(created_account);
+        expect(controller.message).toEqual('Make your first payment in order to get your account activated.');
+      });
     });
 
-
-    it('it does not have message to show when the status of the account is CREATED', function(){
-
-      var statusdeferred = q.defer();
-      var accountdeferred = q.defer();
-      spyOn(chargebackAPI, 'getStatus').and.returnValue(statusdeferred.promise);
-      spyOn(chargebackAPI, 'getCurrentAccount').and.returnValue(accountdeferred.promise);
-
-      controller.loadData();
-      statusdeferred.resolve({data : status});
-      accountdeferred.resolve({data : currentAccount});
-      rootScope.$digest();
-
-      expect(chargebackAPI.getStatus).toHaveBeenCalled();
-      expect(chargebackAPI.getCurrentAccount).toHaveBeenCalled();
-      expect(controller.warn).toBe(false);
-      expect(controller.showMessage).toBe(false);
-      expect(controller.message).toEqual('');
+    describe("when account status is not created not suspended", function(){
+      it("should set showMessage to true", function(){
+        loadDataInjection(currentAccount);
+        expect(controller.showMessage).toBe(false);
+      });
+      it("should set warn to true", function(){
+        loadDataInjection(currentAccount);
+        expect(controller.warn).toBe(false);
+      });
+      it("should update message", function(){
+        loadDataInjection(currentAccount);
+        expect(controller.message).toEqual('');
+      });
     });
 
 

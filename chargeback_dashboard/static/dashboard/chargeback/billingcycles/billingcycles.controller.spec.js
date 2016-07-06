@@ -236,6 +236,24 @@ describe('horizon .payments', function() {
     };
   });
 
+  describe("Initial configuration", function(){
+    it("Initial configuration", function(){
+      expect(controller.account).toEqual({});
+      expect(controller.accounts).toEqual([]);
+      expect(controller.cycle_selected).toBe(null);
+      expect(controller.cycles).toEqual([]);
+      expect(controller.products).toEqual([]);
+      expect(controller.projects).toEqual([]);
+      expect(controller.hide_zero_value).toBe(true);
+      expect(controller.project_selected).toBe(null);
+      expect(controller.role_admin).toBe(false);
+      expect(controller.show_information).toBe(false);
+      expect(controller.has_cycles_to_load).toBe(false);
+      expect(controller.has_projects_to_load).toBe(false);
+      expect(controller.has_products_to_load).toBe(false);
+    });
+  });
+
   describe("getRoles", function() {
     describe("NOT an admin user", function() {
       it("should has role_admin to false", function(){
