@@ -51,7 +51,7 @@
     function getRoles() {
       return apiService.get('/api/user/roles')
         .error(function () {
-          toastService.add('error', 'Unable to retrieve the current1211 account');
+          toastService.add('error', 'Unable to retrieve the role of the account.');
         });
     }
 
