@@ -48,42 +48,42 @@
     function getAccounts(){
       return apiService.get('/api/account')
       .error(function(){
-        toastService.add('error', 'Unable to retrieve the account list');
+        toastService.add('error', 'Unable to retrieve the account list.');
       });
     }
 
     function getCurrentAccount() {
       return apiService.get('/api/account/current')
         .error(function () {
-          toastService.add('error', 'Unable to retrieve the current1211 account');
+          toastService.add('error', 'Unable to retrieve the current account.');
         });
     }
 
     function getCyclesAccount(account_id){
       return apiService.get('/api/account/'+ account_id + '/cycle')
       .error(function(){
-        toastService.add('error', 'Unable to retrieve the cycles for the account' + account_id);
+        toastService.add('error', 'Unable to retrieve the cycles for the account ' + account_id + '.');
       });
     }
 
     function getProductsProject(project_id){
       return apiService.get('/api/project/'+ project_id + '/product')
       .error(function(){
-        toastService.add('error', 'Unable to retrieve the products for the project' + project_id);
+        toastService.add('error', 'Unable to retrieve the products for the project ' + project_id + '.');
       });
     }
 
     function getProjectsCycle(cycle_id){
       return apiService.get('/api/cycle/'+ cycle_id + '/project')
       .error(function(){
-        toastService.add('error', 'Unable to retrieve the project for the cycle' + cycle_id);
+        toastService.add('error', 'Unable to retrieve the project for the cycle ' + cycle_id + '.');
       });
     }
 
     function getStatus(){
       return apiService.get('/api/account/status')
       .error(function(){
-        toastService.add('error', 'Unabled to retrueve the status of the current account');
+        toastService.add('error', 'Unabled to retrueve the status of the current account.');
       });
     }
   }
