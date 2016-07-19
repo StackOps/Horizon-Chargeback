@@ -34,6 +34,7 @@
     "karma-coverage": "1.0.0",
     "karma-jasmine": "1.0.2",
     "karma-ng-html2js-preprocessor": "1.0.0",
-    "karma-threshold-reporter": "0.1.15"
+    "karma-threshold-reporter": "0.1.15",
+    "ng-resource": "^1.3.2"
   }
 }

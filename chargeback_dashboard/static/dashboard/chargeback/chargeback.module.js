@@ -29,10 +29,13 @@
       '$windowProvider',
       '$routeProvider',
       '$locationProvider',
+      '$interpolateProvider',
      ];
 
-    function config($provide, $windowProvider, $routeProvider, $locationProvider) {
+    function config($provide, $windowProvider, $routeProvider, $locationProvider, $interpolateProvider) {
 
+      $interpolateProvider.startSymbol('{$');
+      $interpolateProvider.endSymbol('$}');
       var path = $windowProvider.$get().STATIC_URL + 'dashboard/chargeback/';
       var href = $windowProvider.$get().WEBROOT + 'chargeback/';
 

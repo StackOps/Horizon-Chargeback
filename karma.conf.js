@@ -26,21 +26,7 @@ module.exports = function(config) {
       'node_modules/angular-mocks/angular-mocks.js',
       'node_modules/angular-cookies/angular-cookies.js',
       'node_modules/angular-sanitize/angular-sanitize.js',
-
-
-      // xstaticPath + 'jquery/data/jquery.js',
-
-      // xstaticPath + 'angular_gettext/data/angular-gettext.js',
-      // xstaticPath + 'angular_fileupload/data/ng-file-upload-all.js',
-      // ,
-
-
-      // xstaticPath + 'd3/data/d3.js',
-      // xstaticPath + 'rickshaw/data/rickshaw.js',
-      // xstaticPath + 'angular_smart_table/data/smart-table.js',
-      // xstaticPath + 'angular_lrdragndrop/data/lrdragndrop.js',
-      // xstaticPath + 'spin/data/spin.js',
-      // xstaticPath + 'spin/data/spin.jquery.js',
+      'node_modules/ng-resource/lib/angular-resource.js',
 
       'chargeback_dashboard/static/**/*.html',
       'chargeback_dashboard/static/dashboard/chargeback/chargeback.module.js',
@@ -49,7 +35,8 @@ module.exports = function(config) {
       'chargeback_dashboard/static/**/*.module.js',
       'chargeback_dashboard/static/**/*.controller.js',
       'chargeback_dashboard/static/**/*.js',
-      'chargeback_dashboard/static/**/*spec.js'
+      'chargeback_dashboard/static/**/*spec.js',
+      'chargeback_dashboard/static/**/*.directive.html'
 
     ],
 
@@ -61,9 +48,16 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    // preprocessors: {
+    //   // Used to collect templates for preprocessing.
+    //   // NOTE: the templates must also be listed in the files section below.
+    // },
     preprocessors: {
-      // Used to collect templates for preprocessing.
-      // NOTE: the templates must also be listed in the files section below.
+      'chargeback_dashboard/static/dashboard/widgets/*.html': 'ng-html2js'
+    },
+    ngHtml2JsPreprocessor: {
+      stripPrefix : "chargeback_dashboard",
+      moduleName: 'templates'
     },
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -91,6 +85,12 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [/*'Firefox', 'Chrome', */'PhantomJS'],
+
+    plugins: [
+            'karma-phantomjs-launcher',
+            'karma-jasmine',
+            'karma-ng-html2js-preprocessor'
+        ],
 
 
     // Continuous Integration mode

@@ -26,7 +26,7 @@
       controllerAs : 'balanceCtrl',
       bindToController : true,
       controller : CbkBalanceController,
-      link : link,
+      // link : link,
       scope : {
         amount : '=amount',
         currency_name : '=currencyname'
@@ -34,8 +34,8 @@
       templateUrl : '/static/dashboard/widgets/cbkBalance.directive.html'
     };
   }
-  CbkBalanceController.$inject = [];
-  function CbkBalanceController () {
+  CbkBalanceController.$inject = ['horizon.framework.util.i18n.gettext'];
+  function CbkBalanceController (gettext) {
     this.less_than_zero = this.amount < 0;
     this.tooltip = gettext("The remaining balance is the result of substraiting the monthly consumption from the balance.");
   }
