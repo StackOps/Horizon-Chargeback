@@ -1,4 +1,4 @@
-<div class="container-fluid" ng-controller="horizon.dashboard.chargeback.myPluginController as ctrl">
+<div ng-init="ctrl.getRoles()" class="container-fluid">
   <div ng-if="!ctrl.show_information">
     <img width="24" height="24"
     ng-src="/static/dashboard/images/spinner.gif"/> <span translate>Loading...</span>
@@ -35,7 +35,7 @@
 
       <div ng-if="!ctrl.cycles.length" >
           <p class="empty-text" translate>1. Select an account to see it on details...</p>
-          <div ng-if="ctrl.has_select_cycles">
+          <div ng-if="ctrl.has_cycles_to_load">
             <img width="24" height="24"
             ng-src="/static/dashboard/images/spinner.gif"/> <span translate>Loading...</span>
           </div>
@@ -56,7 +56,7 @@
       <div ng-if="!ctrl.projects.length">
         <p class="empty-text" translate>2. Then select a cycle...</p>
 
-          <div ng-if="ctrl.has_select_projects">
+          <div ng-if="ctrl.has_projects_to_load">
             <img width="24" height="24"
             ng-src="/static/dashboard/images/spinner.gif"/> <span translate>Loading...</span>
           </div>
@@ -76,7 +76,7 @@
 
       <div ng-if="!ctrl.products.length">
         <p class="empty-text" translate>3. Finally, select a project.</p>
-        <div ng-if="ctrl.has_select_products">
+        <div ng-if="ctrl.has_products_to_load">
           <img width="24" height="24"
           ng-src="/static/dashboard/images/spinner.gif"/> <span translate>Loading...</span>
         </div>

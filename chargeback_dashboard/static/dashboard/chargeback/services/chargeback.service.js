@@ -1,23 +1,21 @@
-/**
- * Copyright 2015 IBM Corp.
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may
- * not use this file except in compliance with the License. You may obtain
- * a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 (function () {
   'use strict';
 
   angular
-    .module('horizon.app.core.openstack-service-api')
+    .module('horizon.dashboard.chargeback')
     .factory('horizon.app.core.openstack-service-api.chargeback', chargebackAPI);
 
   chargebackAPI.$inject = [
@@ -48,42 +46,42 @@
     function getAccounts(){
       return apiService.get('/api/account')
       .error(function(){
-        toastService.add('error', 'Unable to retrieve the account list');
+        toastService.add('error', 'Unable to retrieve the account list.');
       });
     }
 
     function getCurrentAccount() {
       return apiService.get('/api/account/current')
         .error(function () {
-          toastService.add('error', 'Unable to retrieve the current1211 account');
+          toastService.add('error', 'Unable to retrieve the current account.');
         });
     }
 
     function getCyclesAccount(account_id){
       return apiService.get('/api/account/'+ account_id + '/cycle')
       .error(function(){
-        toastService.add('error', 'Unable to retrieve the cycles for the account' + account_id);
+        toastService.add('error', 'Unable to retrieve the cycles for the account ' + account_id + '.');
       });
     }
 
     function getProductsProject(project_id){
       return apiService.get('/api/project/'+ project_id + '/product')
       .error(function(){
-        toastService.add('error', 'Unable to retrieve the products for the project' + project_id);
+        toastService.add('error', 'Unable to retrieve the products for the project ' + project_id + '.');
       });
     }
 
     function getProjectsCycle(cycle_id){
       return apiService.get('/api/cycle/'+ cycle_id + '/project')
       .error(function(){
-        toastService.add('error', 'Unable to retrieve the project for the cycle' + cycle_id);
+        toastService.add('error', 'Unable to retrieve the project for the cycle ' + cycle_id + '.');
       });
     }
 
     function getStatus(){
       return apiService.get('/api/account/status')
       .error(function(){
-        toastService.add('error', 'Unabled to retrueve the status of the current account');
+        toastService.add('error', 'Unabled to retrueve the status of the current account.');
       });
     }
   }

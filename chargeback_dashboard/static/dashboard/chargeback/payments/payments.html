@@ -1,4 +1,4 @@
-<div id="chargeback-payments" class="container-fluid" ng-controller="horizon.dashboard.chargeback.PaymentsController as ctrl">
+<div ng-init="ctrl.loadData()" id="chargeback-payments" class="container-fluid">
 
   <div ng-if="!ctrl.show_information">
     <img width="24" height="24"
@@ -13,7 +13,7 @@
 
     <div class="row">
       <cbk-balance class="col-sm-6" currencyname="ctrl.currency_name" amount="ctrl.remaining_balance"></cbk-balance>
-      <cbk-cloud-usage class="col-sm-6" currencyname="ctrl.currency_name" amount="ctrl.consumption"></cbk-cloud-usage >
+      <cbk-cloud-usage class="col-sm-6" currencyname="{$ ctrl.currency_name $}" amount="ctrl.consumption"></cbk-cloud-usage >
     </div>
 
 
