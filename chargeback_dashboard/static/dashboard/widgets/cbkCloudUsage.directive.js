@@ -26,7 +26,7 @@
       controller : CbkCloudUsageController,
       scope : {
         amount : '=amount',
-        currency_name : '@currencyname'
+        currencyname : '@'
       },
       templateUrl : '/static/dashboard/widgets/cbkCloudUsage.directive.html'
     };

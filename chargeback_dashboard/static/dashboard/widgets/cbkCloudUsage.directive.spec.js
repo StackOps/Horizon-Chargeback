@@ -45,7 +45,7 @@
       expect(spanElement.text()).toEqual('Consumption');
     });
     it("should expect controller to update its value", function(){
-      expect(controller.currency_name).toBe('€');
+      expect(controller.currencyname).toBe('€');
       expect(controller.amount).toBe(55);
     });
     it('should expect the payments-ammount contain the amoutn and the currency', function() {
