@@ -14,7 +14,7 @@
 (function() {
   'use strict';
 
-  describe('load-edit directive', function () {
+  describe('cbk-cloud-usage directive', function () {
     var $compile,
       $scope,
       controller,
@@ -25,7 +25,6 @@
 
     beforeEach(module('horizon.dashboard.chargeback'));
     beforeEach(module('templates'));
-    beforeEach(module('horizon.dashboard.chargeback'));
 
     beforeEach(inject(function ($injector) {
       $scope = $injector.get('$rootScope').$new();
